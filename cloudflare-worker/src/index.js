@@ -1,9 +1,12 @@
-import { contextForPersona, selectPersona } from "./cv-context.js";
+import { CV_CONTEXT, SYSTEM_PROMPT } from "./cv-context.js";
 
-const DEFAULT_MODEL = "qwen3:4b";
+const DEFAULT_MODEL = "gemma3:27b";
 const MAX_MESSAGE_LENGTH = 500;
 const MAX_MESSAGES_PER_SESSION = 10;
 const SESSION_TTL_MS = 1000 * 60 * 60 * 6;
+// How many prior turns of context the client may replay for a natural conversation.
+const MAX_HISTORY_TURNS = 8;
+const TEMPERATURE = 0.7;
 
 export default {
   async fetch(request, env) {
@@ -60,6 +63,8 @@ async function handleChat(request, env) {
     return jsonError(env, "Message too long.", 400);
   }
 
+  const history = sanitizeHistory(body?.history);
+
   const fingerprint = await buildFingerprint(request, env);
   const tokenResult = await validateOrCreateToken(body?.token, fingerprint, env);
 
@@ -82,7 +87,7 @@ async function handleChat(request, env) {
 
   let reply;
   try {
-    reply = await queryOllamaCloud(message, env);
+    reply = await queryOllamaCloud(message, history, env);
   } catch (error) {
     return jsonError(env, "Assistant upstream is temporarily unavailable.", 502);
   }
@@ -97,11 +102,16 @@ async function handleChat(request, env) {
   });
 }
 
-async function queryOllamaCloud(message, env) {
+async function queryOllamaCloud(message, history, env) {
   const baseUrl = (env.OLLAMA_BASE_URL || "https://ollama.com").replace(/\/$/, "");
   const model = env.OLLAMA_MODEL || DEFAULT_MODEL;
-  const persona = selectPersona(message);
-  const personaContext = contextForPersona(persona.id);
+
+  const messages = [
+    { role: "system", content: SYSTEM_PROMPT },
+    { role: "system", content: `Adrien's CV context:\n${CV_CONTEXT}` },
+    ...history,
+    { role: "user", content: message },
+  ];
 
   const response = await fetch(`${baseUrl}/api/chat`, {
     method: "POST",
@@ -113,13 +123,9 @@ async function queryOllamaCloud(message, env) {
       model,
       stream: false,
       options: {
-        temperature: 0.1,
+        temperature: TEMPERATURE,
       },
-      messages: [
-        { role: "system", content: persona.prompt.trim() },
-        { role: "system", content: personaContext },
-        { role: "user", content: message },
-      ],
+      messages,
     }),
   });
 
@@ -135,6 +141,23 @@ async function queryOllamaCloud(message, env) {
   }
 
   return text.trim();
+}
+
+// Trust nothing from the client: keep only well-formed user/assistant turns,
+// drop system messages, clamp length and cap how far back we replay.
+function sanitizeHistory(raw) {
+  if (!Array.isArray(raw)) return [];
+
+  const cleaned = [];
+  for (const entry of raw) {
+    const role = entry?.role === "assistant" ? "assistant" : entry?.role === "user" ? "user" : null;
+    const content = typeof entry?.content === "string" ? entry.content.trim() : "";
+    if (!role || !content) continue;
+    cleaned.push({ role, content: content.slice(0, MAX_MESSAGE_LENGTH) });
+  }
+
+  // Keep the most recent turns only (a turn ~= one user + one assistant message).
+  return cleaned.slice(-MAX_HISTORY_TURNS * 2);
 }
 
 async function validateOrCreateToken(rawToken, fingerprint, env) {

@@ -11,16 +11,8 @@ const assistantForm = document.querySelector("#assistant-form");
 const assistantInput = document.querySelector("#assistant-input");
 const assistantMessages = document.querySelector("#assistant-messages");
 const assistantMeta = document.querySelector("#assistant-meta");
-const assistantEyebrow = document.querySelector("#assistant-eyebrow");
-const assistantPersonaName = document.querySelector("#assistant-persona-name");
-const assistantPersonaRole = document.querySelector("#assistant-persona-role");
-const assistantIntro = document.querySelector("#assistant-intro");
-const assistantPersonaMood = document.querySelector("#assistant-persona-mood");
-const assistantPersonaTask = document.querySelector("#assistant-persona-task");
 const assistantSend = document.querySelector("#assistant-send");
 const assistantSuggestions = document.querySelector("#assistant-suggestions");
-const assistantAvatarImage = document.querySelector("#assistant-avatar-image");
-const assistantGalleryItems = document.querySelectorAll(".assistant-gallery__item");
 const chips = document.querySelectorAll(".chip");
 const cards = document.querySelectorAll(".project-card");
 const navLinks = document.querySelectorAll(".section-nav a");
@@ -31,137 +23,26 @@ const sections = [...navLinks]
   .map((link) => document.querySelector(link.getAttribute("href")))
   .filter(Boolean);
 const storedTheme = localStorage.getItem("adrien-cv-theme");
+
 const assistantConfig = window.CV_ASSISTANT_CONFIG || {};
 const assistantEndpoint = assistantConfig.endpoint || "";
-const assistantName = assistantConfig.assistantName || "Airi";
-const ASSISTANT_PERSONAS = {
-  profile: {
-    id: "profile",
-    name: "Mira",
-    role: "Profile architect and poised overview guide",
-    eyebrow: "YIYI Switchboard // Mira",
-    intro:
-      "Mira gives the polished big-picture read: profile, trajectory, strengths and why Adrien's cross-domain positioning stands out.",
-    mood: "Calm synthesis",
-    task: "Best for profile overviews, positioning and recruiter-facing summaries.",
-    placeholder: "Ask Mira for an overview, trajectory or high-level positioning...",
-    suggestions: [
-      "Who is Adrien and what makes his profile stand out?",
-      "How would you summarize Adrien for a recruiter?",
-      "What is the overall shape of Adrien's trajectory?",
-    ],
-    avatar: "assets/assistant/yiyi-1.png",
-    starter:
-      "Hello. YIYI is online. Mira is currently at the front: she handles Adrien's global profile, trajectory and overall positioning.",
-  },
-  work: {
-    id: "work",
-    name: "Kael",
-    role: "Technical analyst for projects, systems and methods",
-    eyebrow: "YIYI Switchboard // Kael",
-    intro:
-      "Kael takes over when the question turns technical: projects, implementation choices, tooling, evaluation logic and engineering depth.",
-    mood: "Sharp analysis",
-    task: "Best for project breakdowns, workflows, tools and technical credibility.",
-    placeholder: "Ask Kael about projects, methods, tools or engineering choices...",
-    suggestions: [
-      "Which projects best show Adrien's technical work?",
-      "What engineering methods define Adrien's work?",
-      "What tools and workflows does Adrien use most?",
-    ],
-    avatar: "assets/assistant/yiyi-2.png",
-    starter:
-      "Kael is on point. He handles Adrien's projects, engineering logic, tools and the technical shape of the work.",
-  },
-  personal: {
-    id: "personal",
-    name: "Sora",
-    role: "Human-side interpreter for style, interests and character",
-    eyebrow: "YIYI Switchboard // Sora",
-    intro:
-      "Sora frames Adrien from the human side: working style, curiosity, hands-on habits and the technical interests that shape his personality.",
-    mood: "Human portrait",
-    task: "Best for working style, personal technical interests and a warmer reading of the profile.",
-    placeholder: "Ask Sora about Adrien's style, curiosity or personal technical interests...",
-    suggestions: [
-      "What kind of person does Adrien seem to be outside pure coursework?",
-      "How do Adrien's technical hobbies shape his profile?",
-      "What does Adrien's working style seem to be?",
-    ],
-    avatar: "assets/assistant/yiyi-3.png",
-    starter:
-      "Sora is listening. She sketches the more human portrait: curiosity, working style, technical hobbies and the energy behind the profile.",
-  },
-};
+const assistantName = assistantConfig.assistantName || "YIYI";
 
-const getPersona = (personaId) => ASSISTANT_PERSONAS[personaId] || ASSISTANT_PERSONAS.profile;
-
-const detectPersonaFromText = (value) => {
-  const text = String(value || "").toLowerCase();
-  const workSignals = [
-    "project",
-    "projects",
-    "work",
-    "technical",
-    "tech",
-    "engineering",
-    "code",
-    "pipeline",
-    "ml",
-    "nlp",
-    "asr",
-    "ocr",
-    "hardware",
-    "system",
-    "systems",
-    "tool",
-    "tools",
-    "stack",
-    "experience",
-    "skills",
-    "internship",
-    "research",
-  ];
-  const personalSignals = [
-    "personality",
-    "personal",
-    "person",
-    "outside work",
-    "outside of work",
-    "life",
-    "hobbies",
-    "hobby",
-    "interests",
-    "passion",
-    "passions",
-    "human",
-    "kind of person",
-    "character",
-    "repair",
-    "rc",
-    "car",
-    "cars",
-    "motor",
-    "languages",
-  ];
-
-  if (personalSignals.some((signal) => text.includes(signal))) {
-    return ASSISTANT_PERSONAS.personal;
-  }
-
-  if (workSignals.some((signal) => text.includes(signal))) {
-    return ASSISTANT_PERSONAS.work;
-  }
-
-  return ASSISTANT_PERSONAS.profile;
-};
+// A few starter prompts. Plain, language-neutral enough, no persona logic.
+const ASSISTANT_SUGGESTIONS = [
+  "Who is Adrien and what makes his profile stand out?",
+  "Which projects best show his technical work?",
+  "What tools and skills does he use most?",
+  "How would you describe his working style?",
+];
 
 const assistantState = {
   token: sessionStorage.getItem("cv-assistant-token") || "",
   used: Number(sessionStorage.getItem("cv-assistant-used") || "0"),
   limit: 10,
   busy: false,
-  persona: "profile",
+  // Conversation history kept in memory only, replayed to the backend for context.
+  history: [],
 };
 
 if (storedTheme) {
@@ -357,6 +238,10 @@ if (sectionNav) {
   sectionNav.addEventListener("pointerleave", resetDockEffect);
 }
 
+/* ---------------------------------------------------------------------------
+ * Assistant (YIYI) — single natural assistant, no persona routing.
+ * ------------------------------------------------------------------------- */
+
 const updateAssistantMeta = (detail) => {
   if (!assistantMeta) return;
 
@@ -371,90 +256,37 @@ const syncAssistantTextarea = () => {
   assistantInput.style.height = `${Math.min(assistantInput.scrollHeight, 160)}px`;
 };
 
-const renderAssistantSuggestions = (persona) => {
+const renderAssistantSuggestions = () => {
   if (!assistantSuggestions) return;
   assistantSuggestions.innerHTML = "";
 
-  persona.suggestions.forEach((text) => {
+  ASSISTANT_SUGGESTIONS.forEach((text) => {
     const button = document.createElement("button");
     button.type = "button";
     button.className = "assistant-suggestion";
-    button.dataset.persona = persona.id;
-    button.textContent = `${persona.name}: ${text}`;
+    button.textContent = text;
 
-    // Gestionnaire de clic pour les suggestions
     button.addEventListener("click", () => {
       if (!assistantInput) return;
-      applyAssistantPersona(persona.id);
       assistantInput.value = text;
       syncAssistantTextarea();
       setAssistantOpen(true);
       assistantInput.focus();
     });
 
-    // Support tactile pour feedback visuel
-    button.addEventListener("touchstart", () => {
-      button.classList.add("touch-active");
-    });
-
-    button.addEventListener("touchend", () => {
-      button.classList.remove("touch-active");
-    });
+    button.addEventListener("touchstart", () => button.classList.add("touch-active"), { passive: true });
+    button.addEventListener("touchend", () => button.classList.remove("touch-active"));
 
     assistantSuggestions.appendChild(button);
   });
 };
 
-const applyAssistantPersona = (personaId, options = {}) => {
-  const persona = getPersona(personaId);
-  assistantState.persona = persona.id;
-
-  if (assistantPanel) {
-    assistantPanel.dataset.persona = persona.id;
-  }
-
-  if (assistantLauncher) {
-    assistantLauncher.dataset.persona = persona.id;
-  }
-
-  if (assistantEyebrow) {
-    assistantEyebrow.textContent = persona.eyebrow;
-  }
-
-  if (assistantPersonaName) {
-    assistantPersonaName.textContent = persona.name;
-  }
-
-  if (assistantPersonaRole) {
-    assistantPersonaRole.textContent = persona.role;
-  }
-
-  if (assistantIntro) {
-    assistantIntro.textContent = persona.intro;
-  }
-
-  if (assistantPersonaMood) {
-    assistantPersonaMood.textContent = persona.mood;
-  }
-
-  if (assistantPersonaTask) {
-    assistantPersonaTask.textContent = persona.task;
-  }
-
-  if (assistantInput) {
-    assistantInput.placeholder = persona.placeholder;
-  }
-
-  if (assistantAvatarImage && (!options.preserveAvatar || !assistantAvatarImage.src)) {
-    assistantAvatarImage.src = persona.avatar;
-  }
-
-  assistantGalleryItems.forEach((item) => {
-    const isActive = item.dataset.persona === persona.id;
-    item.classList.toggle("is-active", isActive);
-  });
-
-  renderAssistantSuggestions(persona);
+// On mobile the keyboard shrinks the visual viewport. Mirror that height onto a
+// CSS variable so the panel stays fully visible above the keyboard.
+const syncViewportHeight = () => {
+  const vv = window.visualViewport;
+  const height = vv ? vv.height : window.innerHeight;
+  document.documentElement.style.setProperty("--app-vh", `${height}px`);
 };
 
 const setAssistantOpen = (open) => {
@@ -463,63 +295,16 @@ const setAssistantOpen = (open) => {
   assistantPanel.classList.toggle("is-open", open);
   assistantPanel.setAttribute("aria-hidden", String(!open));
   assistantLauncher.setAttribute("aria-expanded", String(open));
+  document.body.classList.toggle("assistant-open", open);
 
-  if (open && assistantInput) {
-    // Focus sur le champ d'entrée quand le panneau s'ouvre
-    assistantInput.focus();
-
-    // Gestion de la navigation au clavier pour fermer le panneau
-    const closePanelOnEscape = (event) => {
-      if (event.key === "Escape") {
-        setAssistantOpen(false);
-        assistantLauncher.focus(); // Retourner au bouton de lancement
-        document.removeEventListener("keydown", closePanelOnEscape);
-      }
-    };
-
-    document.addEventListener("keydown", closePanelOnEscape);
-  }
-
-  // Gestion du focus trap pour l'accessibilité
   if (open) {
-    // Stocker l'élément ayant le focus avant l'ouverture
-    const lastFocusedElement = document.activeElement;
-
-    // Créer une fonction pour gérer le focus trap
-    const handleFocusTrap = (event) => {
-      if (event.key === "Tab") {
-        const focusableElements = assistantPanel.querySelectorAll(
-          'button, textarea, [href], input, select, [tabindex]:not([tabindex="-1"])'
-        );
-        const firstElement = focusableElements[0];
-        const lastElement = focusableElements[focusableElements.length - 1];
-
-        if (event.shiftKey && document.activeElement === firstElement) {
-          lastElement.focus();
-          event.preventDefault();
-        } else if (!event.shiftKey && document.activeElement === lastElement) {
-          firstElement.focus();
-          event.preventDefault();
-        }
-      }
-    };
-
-    // Ajouter l'écouteur d'événements pour le focus trap
-    assistantPanel.addEventListener("keydown", handleFocusTrap);
-
-    // Stocker la fonction pour pouvoir la retirer plus tard
-    assistantPanel.handleFocusTrap = handleFocusTrap;
-  } else {
-    // Retirer l'écouteur d'événements du focus trap
-    if (assistantPanel.handleFocusTrap) {
-      assistantPanel.removeEventListener("keydown", assistantPanel.handleFocusTrap);
-      delete assistantPanel.handleFocusTrap;
-    }
+    syncViewportHeight();
+    if (assistantInput) assistantInput.focus();
   }
 };
 
 const appendAssistantMessage = (role, text) => {
-  if (!assistantMessages) return;
+  if (!assistantMessages) return null;
 
   const article = document.createElement("article");
   article.className = `assistant-message assistant-message--${role}`;
@@ -529,16 +314,14 @@ const appendAssistantMessage = (role, text) => {
   article.appendChild(paragraph);
   assistantMessages.appendChild(article);
   assistantMessages.scrollTop = assistantMessages.scrollHeight;
+  return article;
 };
 
 const setAssistantBusy = (busy) => {
   assistantState.busy = busy;
-  if (assistantSend) {
-    assistantSend.disabled = busy || assistantState.used >= assistantState.limit;
-  }
-  if (assistantInput) {
-    assistantInput.disabled = busy || assistantState.used >= assistantState.limit;
-  }
+  const atLimit = assistantState.used >= assistantState.limit;
+  if (assistantSend) assistantSend.disabled = busy || atLimit;
+  if (assistantInput) assistantInput.disabled = busy || atLimit;
 };
 
 if (assistantLauncher) {
@@ -551,15 +334,14 @@ if (assistantLauncher) {
 if (assistantClose) {
   assistantClose.addEventListener("click", () => {
     setAssistantOpen(false);
+    assistantLauncher?.focus();
   });
 }
 
 document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") {
-    // Fermer l'assistant seulement s'il est ouvert
-    if (assistantPanel && assistantPanel.classList.contains("is-open")) {
-      setAssistantOpen(false);
-    }
+  if (event.key === "Escape" && assistantPanel?.classList.contains("is-open")) {
+    setAssistantOpen(false);
+    assistantLauncher?.focus();
   }
 });
 
@@ -574,19 +356,17 @@ if (assistantForm) {
 
     const message = assistantInput.value.trim();
     if (!message || assistantState.busy) return;
-    const persona = detectPersonaFromText(message);
 
     if (assistantState.used >= assistantState.limit) {
       updateAssistantMeta("Session limit reached. Please open a new browser session later.");
       return;
     }
 
-    applyAssistantPersona(persona.id);
     appendAssistantMessage("user", message);
     assistantInput.value = "";
     syncAssistantTextarea();
     setAssistantBusy(true);
-    appendAssistantMessage("status", `${persona.name} is thinking...`);
+    const thinking = appendAssistantMessage("status", `${assistantName} is thinking…`);
 
     try {
       const response = await fetch(assistantEndpoint, {
@@ -597,12 +377,13 @@ if (assistantForm) {
         },
         body: JSON.stringify({
           message,
+          history: assistantState.history,
           token: assistantState.token || null,
         }),
       });
 
       const data = await response.json().catch(() => ({}));
-      assistantMessages?.lastElementChild?.remove();
+      thinking?.remove();
 
       if (!response.ok) {
         const detail = data?.error || data?.detail || "The assistant is temporarily unavailable.";
@@ -622,10 +403,20 @@ if (assistantForm) {
 
       assistantState.used = typeof data.used === "number" ? data.used : assistantState.used + 1;
       sessionStorage.setItem("cv-assistant-used", String(assistantState.used));
-      appendAssistantMessage("assistant", data.reply || "I could not produce a reply.");
+
+      const reply = data.reply || "I could not produce a reply.";
+      appendAssistantMessage("assistant", reply);
+
+      // Track the turn so the next message carries conversational context.
+      assistantState.history.push({ role: "user", content: message });
+      assistantState.history.push({ role: "assistant", content: reply });
+      if (assistantState.history.length > 16) {
+        assistantState.history = assistantState.history.slice(-16);
+      }
+
       updateAssistantMeta();
     } catch (error) {
-      assistantMessages?.lastElementChild?.remove();
+      thinking?.remove();
       appendAssistantMessage("assistant", "Network issue. Please try again in a moment.");
     } finally {
       setAssistantBusy(false);
@@ -633,52 +424,36 @@ if (assistantForm) {
   });
 }
 
-assistantGalleryItems.forEach((button) => {
-  // Support pour les événements tactiles
-  button.addEventListener("click", () => {
-    const nextAvatar = button.dataset.avatar;
-    const personaId = button.dataset.persona || "profile";
-    if (!nextAvatar || !assistantAvatarImage) return;
-
-    assistantAvatarImage.src = nextAvatar;
-    applyAssistantPersona(personaId, { preserveAvatar: true });
-    if (assistantInput) {
-      assistantInput.focus();
-    }
-  });
-
-  // Ajout de support tactile pour feedback visuel
-  button.addEventListener("touchstart", () => {
-    button.classList.add("touch-active");
-  });
-
-  button.addEventListener("touchend", () => {
-    button.classList.remove("touch-active");
-  });
-});
-
 if (assistantInput) {
   assistantInput.addEventListener("input", syncAssistantTextarea);
 
-  // Ajouter la fonctionnalité d'envoi avec la touche Entrée
+  // Envoi avec Entrée (Maj+Entrée = nouvelle ligne)
   assistantInput.addEventListener("keydown", (event) => {
     if (event.key === "Enter" && !event.shiftKey) {
       event.preventDefault();
-      if (assistantForm) {
-        assistantForm.dispatchEvent(new Event('submit'));
-      }
+      assistantForm?.requestSubmit
+        ? assistantForm.requestSubmit()
+        : assistantForm?.dispatchEvent(new Event("submit"));
     }
   });
 }
 
-applyAssistantPersona("profile");
+// Keep the panel sized to the visible viewport (keyboard-aware on phones).
+if (window.visualViewport) {
+  window.visualViewport.addEventListener("resize", syncViewportHeight);
+  window.visualViewport.addEventListener("scroll", syncViewportHeight);
+}
+
+renderAssistantSuggestions();
 syncAssistantTextarea();
 updateAssistantMeta();
 setAssistantBusy(false);
+syncViewportHeight();
 syncScrollProgress();
 window.addEventListener("scroll", syncScrollProgress, { passive: true });
 window.addEventListener("resize", () => {
   resetHeroMotion();
   resetDockEffect();
   syncScrollProgress();
+  syncViewportHeight();
 });

@@ -67,7 +67,7 @@
       Ask YIYI
     </button>
 
-    <aside class="assistant-panel" id="assistant-panel" aria-hidden="true">
+    <aside class="assistant-panel" id="assistant-panel" aria-hidden="true" role="dialog" aria-modal="true" aria-label="YIYI assistant">
       <div class="assistant-panel__header">
         <div class="assistant-panel__identity">
           <div class="assistant-avatar-frame">
@@ -79,39 +79,18 @@
             />
           </div>
           <div>
-          <p class="assistant-panel__eyebrow" id="assistant-eyebrow">YIYI Switchboard</p>
-          <h2 id="assistant-persona-name">Mira</h2>
-          <p class="assistant-panel__subtag" id="assistant-persona-role">Profile architect and poised overview guide</p>
+            <p class="assistant-panel__eyebrow">CV Assistant</p>
+            <h2 id="assistant-name">YIYI</h2>
+            <p class="assistant-panel__subtag">Here to walk you through Adrien's profile and work.</p>
           </div>
         </div>
         <button class="assistant-panel__close" id="assistant-close" type="button" aria-label="Close assistant">Close</button>
       </div>
-      <p class="assistant-panel__intro" id="assistant-intro">
-        Mira gives the polished big-picture read: profile, trajectory, strengths and why Adrien's cross-domain positioning stands out.
-      </p>
-      <div class="assistant-persona-strip" id="assistant-persona-strip" aria-label="Active assistant persona">
-        <span class="assistant-persona-strip__label" id="assistant-persona-mood">Calm synthesis</span>
-        <span class="assistant-persona-strip__task" id="assistant-persona-task">Best for profile overviews, positioning and recruiter-facing summaries.</span>
-      </div>
       <div class="assistant-panel__meta" id="assistant-meta">10 messages available in this browser session.</div>
-      <div class="assistant-gallery" aria-label="YIYI visual set">
-        <button class="assistant-gallery__item is-active" type="button" data-avatar="assets/assistant/yiyi-1.png" data-persona="profile" aria-label="Switch to Mira">
-          <img src="assets/assistant/yiyi-1.png" alt="" />
-          <span class="assistant-gallery__label">Mira</span>
-        </button>
-        <button class="assistant-gallery__item" type="button" data-avatar="assets/assistant/yiyi-2.png" data-persona="work" aria-label="Switch to Kael">
-          <img src="assets/assistant/yiyi-2.png" alt="" />
-          <span class="assistant-gallery__label">Kael</span>
-        </button>
-        <button class="assistant-gallery__item" type="button" data-avatar="assets/assistant/yiyi-3.png" data-persona="personal" aria-label="Switch to Sora">
-          <img src="assets/assistant/yiyi-3.png" alt="" />
-          <span class="assistant-gallery__label">Sora</span>
-        </button>
-      </div>
       <div class="assistant-suggestions" id="assistant-suggestions" aria-live="polite"></div>
       <div class="assistant-messages" id="assistant-messages" aria-live="polite">
         <article class="assistant-message assistant-message--assistant">
-          <p>Hello. YIYI is online. Mira is currently at the front: she handles Adrien's global profile, trajectory and overall positioning.</p>
+          <p>Hi, I'm YIYI 👋 Ask me anything about Adrien — his profile, projects, skills or how he works. I'll keep it short and to the point.</p>
         </article>
       </div>
       <form class="assistant-form" id="assistant-form">
@@ -119,13 +98,13 @@
         <textarea
           id="assistant-input"
           name="message"
-          rows="3"
+          rows="2"
           maxlength="500"
-          placeholder="Ask Mira for overview, Kael for projects, or Sora for Adrien's working style..."
+          placeholder="Ask YIYI about Adrien's profile, projects or skills..."
           required
         ></textarea>
         <div class="assistant-form__footer">
-          <p>Session-only. No conversation history is stored.</p>
+          <p>Session-only. Nothing is stored on the server.</p>
           <button class="button button--primary" id="assistant-send" type="submit">Send</button>
         </div>
       </form>

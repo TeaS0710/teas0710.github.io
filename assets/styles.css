@@ -342,26 +342,6 @@ a:hover {
   transform: translateY(0);
 }
 
-.assistant-launcher[data-persona="profile"] .assistant-launcher__dot {
-  background: linear-gradient(180deg, #ffb8d9, #ff7db8);
-  box-shadow: 0 0 14px rgba(255, 125, 184, 0.5);
-}
-
-.assistant-launcher[data-persona="work"] .assistant-launcher__dot {
-  background: linear-gradient(180deg, #7ec8ff, #3c8dff);
-  box-shadow: 0 0 14px rgba(60, 141, 255, 0.45);
-}
-
-.assistant-launcher[data-persona="personal"] .assistant-launcher__dot {
-  background: linear-gradient(180deg, #ffc07e, #ff8c52);
-  box-shadow: 0 0 14px rgba(255, 140, 82, 0.45);
-}
-
-.assistant-launcher:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--glow);
-}
-
 .assistant-launcher__dot {
   width: 10px;
   height: 10px;
@@ -378,8 +358,7 @@ a:hover {
   display: flex;
   flex-direction: column;
   left: 18px;
-  right: 18px;
-  bottom: 78px;
+  bottom: calc(78px + env(safe-area-inset-bottom, 0px));
   z-index: 21;
   width: min(380px, calc(100vw - 36px));
   max-width: calc(100vw - 36px);
@@ -396,23 +375,7 @@ a:hover {
   transition: opacity 180ms ease, transform 180ms ease, background 260ms ease;
   /* Fix pour les navigateurs qui ne supportent pas backdrop-filter */
   -webkit-backdrop-filter: blur(16px);
-
-  /* Correction pour les problèmes sur PC */
   box-sizing: border-box;
-  /* S'assurer que le panneau ne dépasse pas de l'écran */
-  max-height: calc(100vh - 100px);
-}
-
-.assistant-panel[data-persona="work"] {
-  --assistant-accent: #3c8dff;
-  --assistant-soft: rgba(60, 141, 255, 0.12);
-  --assistant-edge: rgba(60, 141, 255, 0.24);
-}
-
-.assistant-panel[data-persona="personal"] {
-  --assistant-accent: #ff8c52;
-  --assistant-soft: rgba(255, 140, 82, 0.12);
-  --assistant-edge: rgba(255, 140, 82, 0.24);
 }
 
 .assistant-panel.is-open {
@@ -466,94 +429,10 @@ body[data-theme="soft-night"] .assistant-avatar-frame {
   padding: 4px;
 }
 
-.assistant-gallery {
-  display: flex;
-  gap: 8px;
-  margin-bottom: 12px;
-  overflow-x: auto;
-  padding-bottom: 2px;
-  scrollbar-width: none;
-}
-
-.assistant-gallery::-webkit-scrollbar {
-  display: none;
-}
-
-.assistant-gallery__item {
-  display: grid;
-  flex: 0 0 auto;
-  width: 52px;
-  height: 72px;
-  border: 1px solid var(--line);
-  background: var(--surface-strong);
-  border-radius: 16px;
-  padding: 0;
-  overflow: hidden;
-  cursor: pointer;
-  transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
-  /* Amélioration pour l'accessibilité et l'expérience utilisateur */
-  will-change: transform;
-}
-
-.assistant-gallery__item img {
-  width: 100%;
-  height: 52px;
-  object-fit: contain;
-  object-position: center center;
-  padding: 3px;
-  background: linear-gradient(180deg, color-mix(in srgb, var(--assistant-soft) 65%, white), transparent);
-  transition: transform 0.2s ease;
-}
-
-.assistant-gallery__label {
-  display: block;
-  padding: 4px 6px 6px;
-  font-size: 0.7rem;
-  font-weight: 700;
-  color: var(--muted);
-  text-align: center;
-  transition: color 0.2s ease;
-}
-
-.assistant-gallery__item:hover {
-  transform: translateY(-2px);
-}
-
-.assistant-gallery__item:active {
-  transform: translateY(0);
-}
-
-.assistant-gallery__item.is-active {
-  border-color: var(--assistant-accent);
-  box-shadow: 0 0 0 1px var(--assistant-edge), 0 12px 26px color-mix(in srgb, var(--assistant-accent) 18%, transparent);
-}
-
-.assistant-gallery__item.is-active .assistant-gallery__label {
-  color: var(--assistant-accent);
-}
-
 /* Feedback visuel pour les interactions tactiles */
-.assistant-gallery__item.touch-active,
 .assistant-suggestion.touch-active {
   transform: translateY(-2px) scale(0.98);
   opacity: 0.9;
-}
-
-/* Amélioration du hover sur PC */
-@media (hover: hover) {
-  .assistant-gallery__item:hover {
-    transform: translateY(-4px) scale(1.05);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-  }
-
-  .assistant-gallery__item.is-active:hover {
-    transform: translateY(-4px) scale(1.05);
-    box-shadow: 0 0 0 1px var(--assistant-edge), 0 16px 30px color-mix(in srgb, var(--assistant-accent) 25%, transparent);
-  }
-
-  .assistant-gallery__item img:hover {
-    transform: scale(1.1);
-  }
 }
 
 .assistant-panel__eyebrow {
@@ -603,46 +482,12 @@ body[data-theme="soft-night"] .assistant-avatar-frame {
   transform: translateY(0);
 }
 
-.assistant-panel__intro,
 .assistant-panel__meta {
   color: var(--muted);
   line-height: 1.55;
-}
-
-.assistant-panel__intro {
-  margin: 10px 0 8px;
-  flex-shrink: 0;
-}
-
-.assistant-panel__meta {
-  margin-bottom: 12px;
+  margin: 10px 0 12px;
   font-size: 0.86rem;
   flex-shrink: 0;
-}
-
-.assistant-persona-strip {
-  display: grid;
-  gap: 4px;
-  margin: 0 0 12px;
-  padding: 10px 12px;
-  border-radius: 16px;
-  border: 1px solid var(--assistant-edge);
-  background: linear-gradient(180deg, var(--assistant-soft), transparent);
-  flex-shrink: 0;
-}
-
-.assistant-persona-strip__label {
-  color: var(--assistant-accent);
-  font-size: 0.76rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-}
-
-.assistant-persona-strip__task {
-  color: var(--muted);
-  font-size: 0.84rem;
-  line-height: 1.45;
 }
 
 .assistant-messages {
@@ -1084,17 +929,28 @@ body.nav-condensed .section-nav {
     z-index: 22;
   }
 
+  /* Phone: the assistant becomes a full-width bottom sheet that hugs the
+     visible viewport (--app-vh tracks the keyboard via visualViewport in JS). */
   .assistant-panel {
-    left: 8px;
-    right: 8px;
-    bottom: 64px;
-    width: auto;
-    max-width: none;
-    max-height: min(82vh, 720px);
-    padding: 14px;
-    border-radius: 22px;
-    /* Amélioration du positionnement sur petits écrans */
-    max-height: 75vh;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    max-height: calc(var(--app-vh, 100vh) - 12px);
+    padding: 16px;
+    padding-bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+    border-radius: 24px 24px 0 0;
+    transform: translateY(16px);
+  }
+
+  .assistant-panel.is-open {
+    transform: translateY(0);
+  }
+
+  body.assistant-open {
+    overflow: hidden;
   }
 
   .assistant-panel__header {
@@ -1110,34 +966,18 @@ body.nav-condensed .section-nav {
   }
 
   .assistant-panel__subtag,
-  .assistant-panel__intro,
-  .assistant-persona-strip__task,
   .assistant-panel__meta {
     font-size: 0.8rem;
   }
 
-  .assistant-panel__intro {
-    margin: 8px 0 6px;
-  }
-
-  .assistant-persona-strip {
-    margin-bottom: 10px;
-    padding: 9px 10px;
-  }
-
   .assistant-avatar-frame {
-    width: 56px;
-    height: 56px;
+    width: 52px;
+    height: 52px;
     border-radius: 18px;
-  }
-
-  .assistant-gallery__item {
-    min-width: 56px;
   }
 
   .assistant-suggestions {
     flex-wrap: nowrap;
-    /* Amélioration du défilement sur mobile */
     -webkit-overflow-scrolling: touch;
   }
 
@@ -1148,12 +988,13 @@ body.nav-condensed .section-nav {
 
   .assistant-messages {
     min-height: 96px;
-    /* Amélioration du défilement sur mobile */
     -webkit-overflow-scrolling: touch;
   }
 
   .assistant-form textarea {
-    min-height: 72px;
+    min-height: 64px;
+    /* >=16px prevents iOS Safari from zooming in on focus */
+    font-size: 16px;
   }
 
   .assistant-form__footer {
@@ -1163,62 +1004,46 @@ body.nav-condensed .section-nav {
   .simple-list li {
     flex-direction: column;
   }
+}
 
-  /* Ajout de styles spécifiques pour très petits écrans */
-  @media (max-width: 480px) {
-    .assistant-panel {
-      bottom: 70px;
-      max-height: 70vh;
-      padding: 12px;
-    }
-
-    .assistant-avatar-frame {
-      width: 48px;
-      height: 48px;
-    }
-
-    .assistant-form__footer {
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .assistant-form__footer p {
-      text-align: center;
-    }
-
-    .assistant-form__footer button {
-      width: 100%;
-    }
-
-    /* Amélioration du bouton sur PC */
-    .button--primary {
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .button--primary:hover:not(:disabled) {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(31, 58, 85, 0.3);
-    }
-
-    .button--primary:active:not(:disabled) {
-      transform: translateY(0);
-    }
+/* Very small phones: tighten spacing and stack the form footer. */
+@media (max-width: 480px) {
+  .assistant-panel {
+    padding: 14px;
+    padding-bottom: calc(14px + env(safe-area-inset-bottom, 0px));
   }
 
-  /* Ajout de styles spécifiques pour grands écrans (PC) */
-  @media (min-width: 1200px) {
-    .assistant-panel {
-      /* Centrer l'assistant sur les grands écrans */
-      left: auto;
-      right: 24px;
-      width: 380px;
-      max-width: 380px;
-    }
+  .assistant-avatar-frame {
+    width: 46px;
+    height: 46px;
+  }
 
-    .assistant-launcher {
-      right: 24px;
-      left: auto;
-    }
+  .assistant-form__footer {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .assistant-form__footer p {
+    text-align: center;
+  }
+
+  .assistant-form__footer button {
+    width: 100%;
+  }
+}
+
+/* Large screens: dock the assistant to the bottom-right. */
+@media (min-width: 1200px) {
+  .assistant-panel {
+    left: auto;
+    right: 24px;
+    width: 380px;
+    max-width: 380px;
+  }
+
+  .assistant-launcher {
+    right: 24px;
+    left: auto;
   }
 }
 

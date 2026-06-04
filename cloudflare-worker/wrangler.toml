@@ -10,4 +10,6 @@ enabled = true
 [vars]
 ALLOWED_ORIGIN = "https://teas0710.github.io"
 OLLAMA_BASE_URL = "https://ollama.com"
-OLLAMA_MODEL = "gemma3:4b"
+# Larger Gemma model = far more natural conversation than gemma3:4b.
+# One-line swap if you want another Ollama Cloud model later.
+OLLAMA_MODEL = "gemma3:27b"

@@ -8,13 +8,13 @@ This Cloudflare Worker protects your Ollama Cloud API key and limits each browse
 - requires a custom header from your frontend
 - uses a signed stateless session token
 - limits each session to 10 messages
-- stores no conversation history on the server
-- injects a fixed system prompt and CV context before calling Ollama Cloud
+- stores no conversation history on the server (the client replays recent turns so the chat stays contextual)
+- injects a single fixed system prompt (YIYI assistant) and CV context before calling Ollama Cloud
 
 ## Files
 
-- `src/index.js`: Worker proxy and abuse protections
-- `src/cv-context.js`: site context and assistant prompt
+- `src/index.js`: Worker proxy, conversation-history sanitisation and abuse protections
+- `src/cv-context.js`: single source of truth — CV context + the YIYI system prompt
 - `wrangler.toml`: Cloudflare Worker configuration
 
 ## Required secrets
@@ -43,7 +43,7 @@ Edit `/assets/config.js`:
 ```js
 window.CV_ASSISTANT_CONFIG = {
   endpoint: "https://your-worker-subdomain.workers.dev/api/chat",
-  assistantName: "Airi",
+  assistantName: "YIYI",
 };
 ```
 
