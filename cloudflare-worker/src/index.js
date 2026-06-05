@@ -1,6 +1,6 @@
 import { CV_CONTEXT, SYSTEM_PROMPT } from "./cv-context.js";
 
-const DEFAULT_MODEL = "gemma3:27b";
+const DEFAULT_MODEL = "gemma4:31b";
 const MAX_MESSAGE_LENGTH = 500;
 const MAX_MESSAGES_PER_SESSION = 10;
 const SESSION_TTL_MS = 1000 * 60 * 60 * 6;
