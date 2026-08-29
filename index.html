@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Adrien Vergne — AI &amp; NLP Engineering</title>
   <meta
     name="description"
@@ -10,15 +10,15 @@
   />
   <meta property="og:title" content="Adrien Vergne — AI &amp; NLP Engineering" />
   <meta property="og:description" content="A CV shipped as a tiny operating system: draggable windows, a working terminal, and real, measured projects." />
-  <meta name="theme-color" content="#f2ecdf" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext x='16' y='24' text-anchor='middle' font-size='26' fill='%23b23a1a'%3E✳%3C/text%3E%3C/svg%3E" />
+  <meta name="theme-color" content="#1b1e20" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='8.2' fill='none' stroke='%231d99f3' stroke-width='3.6' stroke-dasharray='2.6 2.35'/%3E%3Cpath d='m8.6 8.8 3.4 6.8 3.4-6.8' fill='none' stroke='%231d99f3' stroke-width='2'/%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400&family=Ubuntu+Mono:wght@400;700&display=swap"
     rel="stylesheet"
   />
-  <link rel="stylesheet" href="assets/styles.css?v=3" />
+  <link rel="stylesheet" href="assets/styles.css?v=4" />
 </head>
 <body>
   <noscript>
@@ -31,11 +31,12 @@
 
   <!-- inline icon set -->
   <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+    <symbol id="i-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.2" fill="none" stroke="currentColor" stroke-width="3.4" stroke-dasharray="2.6 2.35"/><circle cx="12" cy="12" r="6.2" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="m8.7 8.9 3.3 6.6 3.3-6.6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/></symbol>
     <symbol id="i-note" viewBox="0 0 24 24"><path d="M5 3h11l3 3v15H5z" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M16 3v3h3M8.5 10h7M8.5 13.5h7M8.5 17h4.5" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
     <symbol id="i-file" viewBox="0 0 24 24"><path d="M5 3h11l3 3v15H5z" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M16 3v3h3" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
     <symbol id="i-folder" viewBox="0 0 24 24"><path d="M3 6h6l2 2.5h10V20H3z" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
     <symbol id="i-term" viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="15" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M6.5 9.5 10 12.5l-3.5 3M12 15.5h5" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
-    <symbol id="i-pdf" viewBox="0 0 24 24"><path d="M5 3h11l3 3v15H5z" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M16 3v3h3" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="12" y="17" text-anchor="middle" font-size="6.5" font-family="Archivo,sans-serif" font-weight="600" fill="currentColor">PDF</text></symbol>
+    <symbol id="i-pdf" viewBox="0 0 24 24"><path d="M5 3h11l3 3v15H5z" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M16 3v3h3" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="12" y="17" text-anchor="middle" font-size="6.5" font-family="Ubuntu,sans-serif" font-weight="600" fill="currentColor">PDF</text></symbol>
     <symbol id="i-log" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M7 8.5h10M7 12h10M7 15.5h6" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
     <symbol id="i-chip" viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 7V3.5M14 7V3.5M10 20.5V17M14 20.5V17M7 10H3.5M7 14H3.5M20.5 10H17M20.5 14H17" stroke="currentColor" stroke-width="1.5"/></symbol>
     <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5.5" width="18" height="13" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
@@ -50,7 +51,7 @@
 
   <!-- ============ DESKTOP ============ -->
   <main class="desktop" id="desktop">
-    <div class="desktop__brand" aria-hidden="true"><span class="star">✳</span> VERGNE-OS <em>2.0</em></div>
+    <div class="desktop__brand" aria-hidden="true"><svg class="ico"><use href="#i-gear"/></svg> VERGNE-OS <em>2.0</em></div>
 
     <div class="desktop-icons" role="list" aria-label="Desktop">
       <button class="dicon" role="listitem" data-open="win-readme"><svg class="ico"><use href="#i-note"/></svg><span>README.md</span></button>
@@ -71,19 +72,20 @@
         <div class="window__btns"><button class="wbtn wbtn--min" aria-label="Minimize">–</button><button class="wbtn wbtn--max" aria-label="Maximize">□</button><button class="wbtn wbtn--close" aria-label="Close">×</button></div>
       </header>
       <div class="window__body prose">
-        <h3><span class="star">✳</span> Welcome to VERGNE-OS</h3>
-        <p class="lead">This is the CV of <strong>Adrien Vergne</strong> — AI &amp; NLP engineering: Python, machine
-        learning, LLM pipelines, applied systems and hardware-linked prototyping. M2 student at Sorbonne
-        Université, freelance missions in parallel.</p>
-        <p>Everything here is a real, working little OS — built from scratch in vanilla JS. Drag the windows,
-        open the terminal, poke around.</p>
+        <h3><svg class="ico ico--accent"><use href="#i-gear"/></svg> Welcome to VERGNE-OS</h3>
+        <p class="lead">The CV of <strong>Adrien Vergne</strong>. M2 in NLP &amp; AI at Sorbonne Université,
+        freelance engineering on the side. Python, machine learning, LLM pipelines, systems, hardware.</p>
+        <p>This is not a template: the whole OS — window manager, terminal, boot sequence — is one
+        hand-written vanilla JS file. View source, it all fits in there.</p>
+        <p>No AI assistant lives here anymore. The previous one (YIYI) was decommissioned in August 2026,
+        and is not missed.</p>
         <div class="quicklinks">
           <button class="btn" data-open="win-projects">Browse projects/</button>
           <button class="btn" data-open="win-cv">Read cv.pdf</button>
           <button class="btn" data-open="win-terminal">Open terminal</button>
           <button class="btn btn--accent" data-open="win-contact">Contact me</button>
         </div>
-        <p class="hint">Tip: in the terminal, try <code>help</code>, <code>neofetch</code> or <code>sudo hire adrien</code>.</p>
+        <p class="hint">Terminal tips: <code>help</code> · <code>train</code> · <code>ollama run adrien</code> · <code>sudo hire adrien</code></p>
       </div>
       <div class="window__resize" aria-hidden="true"></div>
     </section>
@@ -99,11 +101,10 @@
           and natural language processing, and a working practice built on real deliveries: data pipelines,
           supervised classification, LLM inference and evaluation, ASR and OCR experimentation, API and
           platform development, technical documentation, and embedded-oriented prototyping.</p>
-        <p>The common thread is rigor. Every claim is measured: models are compared under identical
-          conditions against gold data, safety properties are red-teamed rather than assumed, performance
-          figures come with reproducible benchmarks, and pipelines log their failures instead of hiding
-          them. I work comfortably across the stack — from LaTeX deliverables for industrial clients to
-          Linux drivers, inverse kinematics and FreeCAD parts.</p>
+        <p>Working habits: models compared under identical conditions against gold data, safety red-teamed
+          instead of assumed, benchmarks reproducible, failures logged rather than hidden. Comfortable
+          anywhere between a LaTeX deliverable for an industrial client and a Linux driver, an IK solver
+          or a FreeCAD part.</p>
         <dl class="kv">
           <div><dt>Location</dt><dd>Saint-Maur-des-Fossés — Paris area, France</dd></div>
           <div><dt>Status</dt><dd>M2 student · open to internships and missions</dd></div>
@@ -159,7 +160,7 @@
           map. Eleven models compared across 44 configurations (zero-shot, few-shot, NER pre-processing)
           against a hand-annotated gold set of 300 records — with retry logic, controlled vocabularies
           and separate error journaling so no failure passes silently.</p>
-        <p class="pmetric">✳ 0.961 macro-F1 — a 31B model matching 675B mixture-of-experts</p>
+        <p class="pmetric">▸ 0.961 macro-F1 — a 31B model matching 675B mixture-of-experts</p>
         <p class="pstack">Python · Ollama · LangExtract · LaTeX</p>
       </div>
       <div class="window__resize" aria-hidden="true"></div>
@@ -178,7 +179,7 @@
           promised in a subsidy dossier are real. Included a critical reading of a 130-page specification,
           identification of indicators declared "unmeasurable", and the data-granularity questions that
           decide whether KPIs are computable at all.</p>
-        <p class="pmetric">✳ 5 KPIs · measurement, not optimization</p>
+        <p class="pmetric">▸ 5 KPIs · measurement, not optimization</p>
         <p class="pstack">Systems analysis · KPI verification · LaTeX / TikZ · EN / KO</p>
       </div>
       <div class="window__resize" aria-hidden="true"></div>
@@ -197,7 +198,7 @@
           design); daily operations tooling (checklists, planning, stock, alerts); and a market
           intelligence product built on public data. Three-plane architecture with contract membranes,
           measured performance dossiers and reproducible cold-start demos.</p>
-        <p class="pmetric">✳ Real-time vision on CPU — aggregates only, no image leaves the device</p>
+        <p class="pmetric">▸ Real-time vision on CPU — aggregates only, no image leaves the device</p>
         <p class="pstack">Python · Cloudflare Pages · Edge / on-prem · Benchmarked</p>
       </div>
       <div class="window__resize" aria-hidden="true"></div>
@@ -213,10 +214,10 @@
         <p class="pctx">Sim-first robot learning, then a physical arm</p>
         <p>Full record → train → eval pipeline with LeRobot and MuJoCo, run without a local GPU: recording
           and evaluation on CPU, training on free cloud GPUs via code-first script kernels, checkpoints on
-          the Hugging Face Hub. Culminates in a voice-driven vision-language-action model and a cockpit
+          the Hugging Face Hub. It ends with a voice-driven vision-language-action model and a cockpit
           app where a cloud VLM does the spatial reasoning while execution stays local, bounded by inverse
           kinematics and safety guards.</p>
-        <p class="pmetric">✳ Sim → real transfer with 0 € of paid compute</p>
+        <p class="pmetric">▸ Sim → real transfer with 0 € of paid compute</p>
         <p class="pstack">LeRobot · MuJoCo · SmolVLA · Whisper</p>
       </div>
       <div class="window__resize" aria-hidden="true"></div>
@@ -235,7 +236,7 @@
           invariant: red-teamed against manipulation prompts, injected delusional corpora and escalating
           model power, with the vital cases re-read by hand and tested for variance. Includes bounded
           memory, RAG over personal documents, PBKDF2 auth and PWA packaging.</p>
-        <p class="pmetric">✳ 44–45 / 45 on the full red-team suite — 0 hard failures</p>
+        <p class="pmetric">▸ 44–45 / 45 on the full red-team suite — 0 hard failures</p>
         <p class="pstack">TypeScript · Cloudflare Workers · Ollama · RAG</p>
       </div>
       <div class="window__resize" aria-hidden="true"></div>
@@ -251,10 +252,9 @@
         <p class="pctx">Freelance mission — social-sector startup beta</p>
         <p>A platform matching elderly, often isolated caregivers with younger helpers who visit regularly
           — the design bet being that help becomes acceptable when it flows through transmission rather
-          than assistance. Four user surfaces, geographic matching, a demonstration review site, and an
-          engineering culture of guard-rails: static verification rules, HTTP leak checks and documented
-          production pitfalls.</p>
-        <p class="pmetric">✳ 17-screen build with a static verification harness</p>
+          than assistance. Four user surfaces, geographic matching, a demonstration review site, and guard-rails
+          everywhere: static verification rules, HTTP leak checks, documented production pitfalls.</p>
+        <p class="pmetric">▸ 17-screen build with a static verification harness</p>
         <p class="pstack">SvelteKit · PostgreSQL · PostGIS · Node</p>
       </div>
       <div class="window__resize" aria-hidden="true"></div>
@@ -272,7 +272,7 @@
           — that evolves on its own. Neither pure determinism (which drifts) nor pure LLM (which
           hallucinates): every kernel, including the LLM, emits only typed pressures, resolved by
           least-violation under a hard feasibility envelope, so plausibility is coerced by structure.</p>
-        <p class="pmetric">✳ Multi-kernel · typed pressures · feasibility envelope</p>
+        <p class="pmetric">▸ Multi-kernel · typed pressures · feasibility envelope</p>
         <p class="pstack">Python · Multi-agent · LLM-in-the-loop</p>
       </div>
       <div class="window__resize" aria-hidden="true"></div>
@@ -290,7 +290,7 @@
           five previous French elections with leave-one-out validation, Latin-hypercube sensitivity
           analysis and CMA-ES optimization. Includes an explicit audit of the model's own optimistic
           biases — the corrected version honestly reports structural quasi-impossibility.</p>
-        <p class="pmetric">✳ Leave-one-out MAE 4.43 pts — bias audit included</p>
+        <p class="pmetric">▸ Leave-one-out MAE 4.43 pts — bias audit included</p>
         <p class="pstack">Python · CMA-ES · LHS · Calibration</p>
       </div>
       <div class="window__resize" aria-hidden="true"></div>
@@ -308,7 +308,7 @@
           normalization into datasets, windowing, machine-learning baselines for presence and coarse
           activity detection, and terminal/web dashboards — working at the interface of software, drivers
           and radio hardware.</p>
-        <p class="pmetric">✳ Presence detection from radio signals alone</p>
+        <p class="pmetric">▸ Presence detection from radio signals alone</p>
         <p class="pstack">Python · Linux · Signal processing · scikit-learn</p>
       </div>
       <div class="window__resize" aria-hidden="true"></div>
@@ -425,7 +425,7 @@
         <div class="window__btns"><button class="wbtn wbtn--min" aria-label="Minimize">–</button><button class="wbtn wbtn--max" aria-label="Maximize">□</button><button class="wbtn wbtn--close" aria-label="Close">×</button></div>
       </header>
       <div class="window__body prose">
-        <h3>Write to me <span class="star">✳</span></h3>
+        <h3>Write to me</h3>
         <p class="lead">Open to M2 internships, freelance missions and technical collaborations.</p>
         <a class="mail-big" href="mailto:vergneadrien65@gmail.com">vergneadrien65@gmail.com</a>
         <dl class="kv">
@@ -526,7 +526,7 @@
       <div class="window__body term" id="term-body">
         <div class="term__out" id="term-out"></div>
         <form class="term__form" id="term-form" autocomplete="off">
-          <label class="term__prompt" for="term-in">adrien@vergne-os:~$</label>
+          <label class="term__prompt" for="term-in"><span class="tp-u">adrien@vergne-os</span><span class="tp-p">:~</span>$</label>
           <input class="term__in" id="term-in" name="cmd" type="text" spellcheck="false" autocapitalize="off" aria-label="Terminal command" />
         </form>
       </div>
@@ -537,7 +537,7 @@
 
   <!-- ============ TASKBAR ============ -->
   <footer class="taskbar">
-    <button class="taskbar__menu" id="menu-btn" aria-haspopup="true" aria-expanded="false"><span class="star">✳</span> VERGNE-OS</button>
+    <button class="taskbar__menu" id="menu-btn" aria-haspopup="true" aria-expanded="false"><svg class="ico ico--accent"><use href="#i-gear"/></svg> VERGNE-OS</button>
     <div class="taskbar__tasks" id="taskbar-tasks"></div>
     <div class="taskbar__clock"><span id="tb-date"></span><strong id="tb-time"></strong></div>
   </footer>
@@ -554,6 +554,6 @@
     <button data-open="win-contact"><svg class="ico"><use href="#i-mail"/></svg> contact.mail</button>
   </nav>
 
-  <script src="assets/app.js?v=3"></script>
+  <script src="assets/app.js?v=4"></script>
 </body>
 </html>
