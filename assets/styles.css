@@ -131,7 +131,7 @@ button { font-family: inherit; color: inherit; }
 .dicon .ico { width: 34px; height: 34px; color: #d3dae3; }
 .dicon span {
   font-family: var(--font-mono);
-  font-size: 12px;
+  font-size: 11px;
   color: var(--text);
   background: rgba(0, 0, 0, 0.38);
   border-radius: 4px;
