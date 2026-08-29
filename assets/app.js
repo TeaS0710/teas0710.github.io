@@ -1,4 +1,4 @@
-/* VERGNE-OS — window manager, boot sequence, terminal. Vanilla JS, no dependencies. */
+/* VERGNE-OS: window manager, boot sequence, terminal. Vanilla JS, no dependencies. */
 (function () {
   "use strict";
 
@@ -334,9 +334,9 @@
     '<span class="t-ac">██        ██</span>  <span class="t-ok">adrien</span>@<span class="t-ok">vergne-os</span>',
     '<span class="t-ac"> ██      ██ </span>  ─────────────────',
     '<span class="t-ac">  ██    ██  </span>  OS:       VERGNE-OS 2.0 (breeze edition)',
-    '<span class="t-ac">   ██  ██   </span>  Host:     Sorbonne Université — M2 NLP &amp; AI',
+    '<span class="t-ac">   ██  ██   </span>  Host:     Sorbonne Université · M2 NLP &amp; AI',
     '<span class="t-ac">    ████    </span>  Kernel:   nlp-6.1-llm',
-    '<span class="t-ac">     ██     </span>  Shell:    vanilla-js — view source, it\'s all there',
+    '<span class="t-ac">     ██     </span>  Shell:    vanilla-js (view source, it\'s all there)',
     '              Model:    gemma4:31b (daily driver)',
     '              Uptime:   coding since 2022',
     '              Packages: 15+ projects (9 featured)',
@@ -346,10 +346,10 @@
 
   var OLLAMA_LIST = [
     '<span class="t-cmd">NAME                    SIZE     NOTE</span>',
-    "gemma4:31b              19 GB    thesis workhorse — best F1/cost",
+    "gemma4:31b              19 GB    thesis workhorse, best F1/cost",
     "deepseek-v3.2           cloud    benchmarked, ties with langextract",
     "qwen3.5:397b-cloud      cloud    benchmarked",
-    "mistral-large-3:675b    cloud    benchmarked — bigger ≠ better",
+    "mistral-large-3:675b    cloud    benchmarked. bigger ≠ better",
     "adrien:m2               1 human  always loaded, never quantized"
   ].join("\n");
 
@@ -359,7 +359,7 @@
     var e = 0;
     (function epoch() {
       if (e >= 3) {
-        tprint('early stop: gold F1 <span class="t-ok">0.961</span> — good enough to ship');
+        tprint('early stop: gold F1 <span class="t-ok">0.961</span>, good enough to ship');
         tprint('checkpoint saved → <span class="t-ac">cv_adrien_vergne.pdf</span> <span class="t-dim">(type</span> cv <span class="t-dim">to open it)</span>');
         termBusy = false;
         return;
@@ -374,12 +374,12 @@
 
   function cmdOllamaRun(model) {
     if (model !== "adrien" && model !== "adrien:m2") {
-      tprint('model "' + esc(model) + '" not found locally — <span class="t-dim">try</span> ollama run adrien');
+      tprint('model "' + esc(model) + '" not found locally. <span class="t-dim">try</span> ollama run adrien');
       return;
     }
     termBusy = true;
     tbar(function (p) { return ollamaLine("8f2a1c9e", "1 human", p); }, 450, function () {
-      tprint('<span class="t-dim">&gt;&gt;&gt; loaded adrien:m2 — streaming…</span>');
+      tprint('<span class="t-dim">&gt;&gt;&gt; loaded adrien:m2, streaming…</span>');
       tstream("Hi. I normalize museum catalogues with LLMs, benchmark 11 models against hand-made gold data, " +
         "teach a robot arm in MuJoCo, audit factory KPIs, and tune RC cars past 200 km/h. " +
         "Weights are not for sale, but inference is: vergneadrien65@gmail.com", function () {
@@ -408,7 +408,7 @@
       ].join("\n");
     },
     about: function () { openWindow("win-about"); return "opening about.txt …"; },
-    whoami: function () { return 'adrien — M2 NLP &amp; AI @ Sorbonne Université, freelance on the side.\n<span class="t-dim">Trains on free Kaggle GPUs. Trusts gold data over vibes.</span>'; },
+    whoami: function () { return 'adrien: M2 NLP &amp; AI @ Sorbonne Université, freelance on the side.\n<span class="t-dim">Trains on free Kaggle GPUs. Trusts gold data over vibes.</span>'; },
     projects: function () {
       openWindow("win-projects");
       return [
@@ -433,7 +433,7 @@
     neofetch: function () { return NEOFETCH; },
     "nvidia-smi": function () {
       return 'NVIDIA-SMI has failed: <span class="t-ac">no GPU found on this machine</span>\n' +
-        '<span class="t-dim">business as usual — training runs on free Kaggle/Modal quota,\n' +
+        '<span class="t-dim">business as usual: training runs on free Kaggle/Modal quota,\n' +
         'inference stays on CPU. see p04 (robot arm) for the full recipe.</span>';
     },
     ls: function () { return "README.md   about.txt   projects/   experience.log   skills.sys\neducation.db   cv_adrien_vergne.pdf   contact.mail"; },
@@ -449,12 +449,12 @@
     history.push(input);
     histIdx = history.length;
 
-    if (termBusy) { tprint('<span class="t-dim">busy — one training run at a time on CPU.</span>'); return; }
+    if (termBusy) { tprint('<span class="t-dim">busy: one training run at a time on CPU.</span>'); return; }
 
     var lower = input.toLowerCase();
 
     if (/^sudo\s+hire\s+adrien/.test(lower) || lower === "hire" || lower === "hire adrien") {
-      tprint('[sudo] checking credentials … <span class="t-ok">OK</span>\npermission granted ✓ — opening contact.mail');
+      tprint('[sudo] checking credentials … <span class="t-ok">OK</span>\npermission granted ✓ opening contact.mail …');
       openWindow("win-contact");
       return;
     }
@@ -481,7 +481,7 @@
       return;
     }
     if (/^pip\s+install\s+adrien/.test(lower)) {
-      tprint('Collecting adrien\n  <span class="t-dim">Downloading adrien-2026.8-py3-none-any.whl (metadata: M2, Sorbonne)</span>\nInstalling collected packages: adrien\n<span class="t-ok">Successfully installed adrien-2026.8</span> — see contact.mail for licensing');
+      tprint('Collecting adrien\n  <span class="t-dim">Downloading adrien-2026.8-py3-none-any.whl (metadata: M2, Sorbonne)</span>\nInstalling collected packages: adrien\n<span class="t-ok">Successfully installed adrien-2026.8</span>. see contact.mail for licensing');
       return;
     }
     if (lower === "sudo") { tprint('<span class="t-dim">usage: sudo hire adrien</span>'); return; }
@@ -493,7 +493,7 @@
       var res = COMMANDS[cmd]();
       if (res) tprint(res);
     } else {
-      tprint('command not found: ' + esc(cmd) + ' — <span class="t-dim">try</span> help');
+      tprint('command not found: ' + esc(cmd) + '. <span class="t-dim">try</span> help');
     }
   }
 
@@ -512,7 +512,7 @@
     }
   });
 
-  tprint('<span class="t-cmd">VERGNE-OS terminal</span> — type <span class="t-ac">help</span> to get started.');
+  tprint('<span class="t-cmd">VERGNE-OS terminal</span>. type <span class="t-ac">help</span> to get started.');
 
   /* ============ BOOT ============ */
   var boot = $("#boot");
@@ -537,7 +537,7 @@
   }
 
   var BOOT_STEPS = [
-    { line: '<span class="ac">VERGNE-OS 2.0</span> — boot sequence', d: 120 },
+    { line: '<span class="ac">VERGNE-OS 2.0</span> · boot sequence', d: 120 },
     { line: "[ <span class='ok'>OK</span> ] cpu0: human, caffeinated", d: 130 },
     { line: "[ <span class='ok'>OK</span> ] loading nlp.ko · mujoco.ko · freecad.ko", d: 140 },
     { line: "$ ollama pull adrien:m2", d: 160 },
