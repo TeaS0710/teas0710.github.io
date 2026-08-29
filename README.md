@@ -1,15 +1,18 @@
-# Adrien Vergne — CV site
+# VERGNE-OS — CV d'Adrien Vergne
 
-Static one-page CV, no framework, no backend, no trackers. Industrial engineering aesthetic
-(dark graphite, signal amber, technical mono accents), with a clean print stylesheet for
-PDF export via the "Print / PDF" button.
+**En ligne : https://teas0710.github.io/**
+
+Le CV présenté comme un petit système d'exploitation jouable (thème Breeze/Kubuntu) :
+fenêtres déplaçables, terminal fonctionnel (`help`, `train`, `ollama run adrien`,
+`sudo hire adrien`…), boot animé façon tqdm/ollama, document `cv.pdf` imprimable.
+Vanilla JS, zéro dépendance, zéro tracker.
 
 ## Structure
 
 ```
-index.html          the whole page (hero, profile, experience, projects, skills, education, contact)
-assets/styles.css   design system + print styles
-assets/app.js       scroll progress, active nav, reveal animations, project filters, print
+index.html          bureau, fenêtres (contenu du CV), barre des tâches, symboles SVG
+assets/styles.css   thème Breeze dark + mobile + print (le doc CV seul s'imprime)
+assets/app.js       window manager, boot animé, terminal, horloge, filtres
 ```
 
 ## Local preview
@@ -21,7 +24,7 @@ python3 -m http.server 8000
 
 ## Deploy
 
-Any static host works (GitHub Pages, Cloudflare Pages…). Nothing to build.
+Site utilisateur GitHub Pages : un push sur main déploie https://teas0710.github.io/ (~30 s). Rien à builder.
 
 ```bash
 git add .
