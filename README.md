@@ -1,6 +1,6 @@
 # VERGNE-OS — CV d'Adrien Vergne
 
-**En ligne : https://teas0710.github.io/**
+**En ligne : https://vergne.pages.dev/** (miroir : https://teas0710.github.io/)
 
 Le CV présenté comme un petit système d'exploitation jouable (thème Breeze/Kubuntu) :
 fenêtres déplaçables, terminal fonctionnel (`help`, `train`, `ollama run adrien`,
@@ -24,10 +24,9 @@ python3 -m http.server 8000
 
 ## Deploy
 
-Site utilisateur GitHub Pages : un push sur main déploie https://teas0710.github.io/ (~30 s). Rien à builder.
-
 ```bash
-git add .
-git commit -m "…"
-git push origin main
+git add . && git commit -m "…"
+./deploy.sh    # git push (miroir GitHub Pages) + wrangler pages deploy (vergne.pages.dev)
 ```
+
+Rien à builder. `deploy.sh` demande wrangler connecté au compte Cloudflare (`wrangler whoami`).
