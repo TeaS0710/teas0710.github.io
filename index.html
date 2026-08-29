@@ -6,332 +6,320 @@
   <title>Adrien Vergne — AI &amp; NLP Engineering</title>
   <meta
     name="description"
-    content="Adrien Vergne — AI &amp; NLP engineering. Python, machine learning, LLM pipelines, applied systems and hardware-linked prototyping. M2 student at Sorbonne Université, freelance missions."
+    content="Adrien Vergne — AI &amp; NLP engineering. Python, machine learning, LLM pipelines, applied systems and hardware-linked prototyping. M2 student at Sorbonne Université, freelance missions. Presented as VERGNE-OS, a playable desktop."
   />
   <meta property="og:title" content="Adrien Vergne — AI &amp; NLP Engineering" />
-  <meta property="og:description" content="LLM pipelines, machine learning, applied systems engineering and hardware-linked prototyping." />
-  <meta name="theme-color" content="#faf7f2" />
+  <meta property="og:description" content="A CV shipped as a tiny operating system: draggable windows, a working terminal, and real, measured projects." />
+  <meta name="theme-color" content="#f2ecdf" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext x='16' y='24' text-anchor='middle' font-size='26' fill='%23b23a1a'%3E✳%3C/text%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..600&family=Archivo:wght@400;500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
     rel="stylesheet"
   />
-  <link rel="stylesheet" href="assets/styles.css" />
+  <link rel="stylesheet" href="assets/styles.css?v=3" />
 </head>
 <body>
-  <div class="scroll-progress" aria-hidden="true"><div class="scroll-progress__bar" id="scroll-progress-bar"></div></div>
+  <noscript>
+    <style>
+      .boot, .desktop-icons, .taskbar, .window { display: none !important; }
+      #win-cv { display: flex !important; position: static !important; width: auto !important; height: auto !important; max-width: 860px; margin: 2rem auto; }
+      #win-cv .window__bar { display: none; }
+    </style>
+  </noscript>
 
-  <header class="masthead">
-    <a class="masthead__brand" href="#top">Adrien Vergne</a>
-    <nav class="masthead__nav" aria-label="Main navigation" id="main-nav">
-      <a href="#profile">Profile</a>
-      <a href="#experience">Experience</a>
-      <a href="#projects">Projects</a>
-      <a href="#skills">Skills</a>
-      <a href="#education">Education</a>
-      <a href="#contact">Contact</a>
-    </nav>
-    <button class="masthead__print" id="print-cv" type="button">Print / PDF</button>
-  </header>
+  <!-- inline icon set -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+    <symbol id="i-note" viewBox="0 0 24 24"><path d="M5 3h11l3 3v15H5z" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M16 3v3h3M8.5 10h7M8.5 13.5h7M8.5 17h4.5" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M5 3h11l3 3v15H5z" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M16 3v3h3" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+    <symbol id="i-folder" viewBox="0 0 24 24"><path d="M3 6h6l2 2.5h10V20H3z" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+    <symbol id="i-term" viewBox="0 0 24 24"><rect x="3" y="4.5" width="18" height="15" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M6.5 9.5 10 12.5l-3.5 3M12 15.5h5" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+    <symbol id="i-pdf" viewBox="0 0 24 24"><path d="M5 3h11l3 3v15H5z" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M16 3v3h3" fill="none" stroke="currentColor" stroke-width="1.5"/><text x="12" y="17" text-anchor="middle" font-size="6.5" font-family="Archivo,sans-serif" font-weight="600" fill="currentColor">PDF</text></symbol>
+    <symbol id="i-log" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M7 8.5h10M7 12h10M7 15.5h6" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+    <symbol id="i-chip" viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 7V3.5M14 7V3.5M10 20.5V17M14 20.5V17M7 10H3.5M7 14H3.5M20.5 10H17M20.5 14H17" stroke="currentColor" stroke-width="1.5"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><rect x="3" y="5.5" width="18" height="13" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="m3.5 6.5 8.5 6.5 8.5-6.5" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+    <symbol id="i-cap" viewBox="0 0 24 24"><path d="m12 4 10 5-10 5L2 9z" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M6.5 11.5V16c0 1.2 2.5 2.5 5.5 2.5s5.5-1.3 5.5-2.5v-4.5" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
+  </svg>
 
-  <main class="page" id="top">
+  <!-- ============ BOOT ============ -->
+  <div class="boot" id="boot" aria-hidden="true">
+    <pre class="boot__log" id="boot-log"></pre>
+    <p class="boot__skip">click anywhere to skip</p>
+  </div>
 
-    <!-- ============ HERO ============ -->
-    <section class="hero">
-      <p class="hero__issue"><span class="star" aria-hidden="true">✳</span> Nº 1 — Curriculum Vitae · August 2026 · Paris</p>
-      <h1 class="hero__title">Adrien <em>Vergne</em></h1>
-      <p class="hero__role">AI &amp; NLP Engineering — Python · Machine Learning · Applied Systems</p>
+  <!-- ============ DESKTOP ============ -->
+  <main class="desktop" id="desktop">
+    <div class="desktop__brand" aria-hidden="true"><span class="star">✳</span> VERGNE-OS <em>2.0</em></div>
 
-      <div class="hero__lede">
-        <p>
-          I build measured, auditable systems: LLM pipelines benchmarked against hand-annotated gold data,
-          real-time vision that runs on CPU-only hardware, safety-framed conversational AI certified at the
-          bench, and robot-learning stacks from simulation to a physical arm. Currently an M2 student in NLP
-          and AI applications at Sorbonne Université, working freelance engineering missions in parallel.
-        </p>
+    <div class="desktop-icons" role="list" aria-label="Desktop">
+      <button class="dicon" role="listitem" data-open="win-readme"><svg class="ico"><use href="#i-note"/></svg><span>README.md</span></button>
+      <button class="dicon" role="listitem" data-open="win-about"><svg class="ico"><use href="#i-file"/></svg><span>about.txt</span></button>
+      <button class="dicon" role="listitem" data-open="win-projects"><svg class="ico"><use href="#i-folder"/></svg><span>projects/</span></button>
+      <button class="dicon" role="listitem" data-open="win-terminal"><svg class="ico"><use href="#i-term"/></svg><span>terminal</span></button>
+      <button class="dicon" role="listitem" data-open="win-experience"><svg class="ico"><use href="#i-log"/></svg><span>experience.log</span></button>
+      <button class="dicon" role="listitem" data-open="win-skills"><svg class="ico"><use href="#i-chip"/></svg><span>skills.sys</span></button>
+      <button class="dicon" role="listitem" data-open="win-education"><svg class="ico"><use href="#i-cap"/></svg><span>education.db</span></button>
+      <button class="dicon" role="listitem" data-open="win-cv"><svg class="ico"><use href="#i-pdf"/></svg><span>cv.pdf</span></button>
+      <button class="dicon" role="listitem" data-open="win-contact"><svg class="ico"><use href="#i-mail"/></svg><span>contact.mail</span></button>
+    </div>
+
+    <!-- ============ WINDOWS ============ -->
+
+    <section class="window" id="win-readme" data-title="README.md" data-icon="i-note" data-w="520" data-h="460" aria-label="README">
+      <header class="window__bar"><svg class="ico"><use href="#i-note"/></svg><h2>README.md</h2>
+        <div class="window__btns"><button class="wbtn wbtn--min" aria-label="Minimize">–</button><button class="wbtn wbtn--max" aria-label="Maximize">□</button><button class="wbtn wbtn--close" aria-label="Close">×</button></div>
+      </header>
+      <div class="window__body prose">
+        <h3><span class="star">✳</span> Welcome to VERGNE-OS</h3>
+        <p class="lead">This is the CV of <strong>Adrien Vergne</strong> — AI &amp; NLP engineering: Python, machine
+        learning, LLM pipelines, applied systems and hardware-linked prototyping. M2 student at Sorbonne
+        Université, freelance missions in parallel.</p>
+        <p>Everything here is a real, working little OS — built from scratch in vanilla JS. Drag the windows,
+        open the terminal, poke around.</p>
+        <div class="quicklinks">
+          <button class="btn" data-open="win-projects">Browse projects/</button>
+          <button class="btn" data-open="win-cv">Read cv.pdf</button>
+          <button class="btn" data-open="win-terminal">Open terminal</button>
+          <button class="btn btn--accent" data-open="win-contact">Contact me</button>
+        </div>
+        <p class="hint">Tip: in the terminal, try <code>help</code>, <code>neofetch</code> or <code>sudo hire adrien</code>.</p>
       </div>
-
-      <div class="hero__actions">
-        <a class="button" href="#projects">View projects</a>
-        <a class="textlink" href="https://github.com/TeaS0710" target="_blank" rel="noopener noreferrer">GitHub <svg class="ext" width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 8 8 2M3.5 2H8v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a>
-        <a class="textlink" href="https://www.linkedin.com/in/adrien-vergne-542297161" target="_blank" rel="noopener noreferrer">LinkedIn <svg class="ext" width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 8 8 2M3.5 2H8v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a>
-      </div>
-
-      <dl class="hero__meta">
-        <div><dt>Location</dt><dd>Saint-Maur-des-Fossés — Paris area, France</dd></div>
-        <div><dt>Status</dt><dd>M2 student · open to internships and missions</dd></div>
-        <div><dt>Focus</dt><dd>LLM pipelines · ML evaluation · systems engineering</dd></div>
-        <div><dt>Contact</dt><dd><a href="mailto:vergneadrien65@gmail.com">vergneadrien65@gmail.com</a></dd></div>
-      </dl>
-
-      <ul class="statstrip" aria-label="Key figures">
-        <li><span class="statstrip__value">51&#8239;123</span><span class="statstrip__label">museum records processed end-to-end</span></li>
-        <li><span class="statstrip__value">11</span><span class="statstrip__label">LLMs benchmarked across 44 configurations</span></li>
-        <li><span class="statstrip__value">0.961</span><span class="statstrip__label">macro-F1 on hand-annotated gold data</span></li>
-        <li><span class="statstrip__value">15+</span><span class="statstrip__label">projects across AI, systems and hardware</span></li>
-      </ul>
+      <div class="window__resize" aria-hidden="true"></div>
     </section>
 
-    <!-- ============ 01 PROFILE ============ -->
-    <section class="section reveal" id="profile">
-      <header class="section__head">
-        <span class="section__index" aria-hidden="true">01</span>
-        <h2>Profile</h2>
+    <section class="window" id="win-about" data-title="about.txt" data-icon="i-file" data-w="560" data-h="480" aria-label="About">
+      <header class="window__bar"><svg class="ico"><use href="#i-file"/></svg><h2>about.txt</h2>
+        <div class="window__btns"><button class="wbtn wbtn--min" aria-label="Minimize">–</button><button class="wbtn wbtn--max" aria-label="Maximize">□</button><button class="wbtn wbtn--close" aria-label="Close">×</button></div>
       </header>
-      <div class="section__body section__body--split">
-        <p class="dropcap">
-          Master's student at Sorbonne Université with training in software engineering, machine learning
+      <div class="window__body prose">
+        <h3>Adrien Vergne</h3>
+        <p class="lead"><em>AI &amp; NLP Engineering — Python · Machine Learning · Applied Systems</em></p>
+        <p>Master's student at Sorbonne Université with training in software engineering, machine learning
           and natural language processing, and a working practice built on real deliveries: data pipelines,
           supervised classification, LLM inference and evaluation, ASR and OCR experimentation, API and
-          platform development, technical documentation, and embedded-oriented prototyping.
-        </p>
-        <p>
-          The common thread is rigor. Every claim is measured: models are compared under identical
+          platform development, technical documentation, and embedded-oriented prototyping.</p>
+        <p>The common thread is rigor. Every claim is measured: models are compared under identical
           conditions against gold data, safety properties are red-teamed rather than assumed, performance
           figures come with reproducible benchmarks, and pipelines log their failures instead of hiding
           them. I work comfortably across the stack — from LaTeX deliverables for industrial clients to
-          Linux drivers, inverse kinematics and FreeCAD parts.
-        </p>
+          Linux drivers, inverse kinematics and FreeCAD parts.</p>
+        <dl class="kv">
+          <div><dt>Location</dt><dd>Saint-Maur-des-Fossés — Paris area, France</dd></div>
+          <div><dt>Status</dt><dd>M2 student · open to internships and missions</dd></div>
+          <div><dt>Focus</dt><dd>LLM pipelines · ML evaluation · systems engineering</dd></div>
+          <div><dt>Languages</dt><dd>French (native) · English (B2/C1) · Italian (B2)</dd></div>
+        </dl>
       </div>
+      <div class="window__resize" aria-hidden="true"></div>
     </section>
 
-    <!-- ============ 02 EXPERIENCE ============ -->
-    <section class="section reveal" id="experience">
-      <header class="section__head">
-        <span class="section__index" aria-hidden="true">02</span>
-        <h2>Experience</h2>
+    <section class="window" id="win-projects" data-title="~/projects" data-icon="i-folder" data-w="720" data-h="520" aria-label="Projects">
+      <header class="window__bar"><svg class="ico"><use href="#i-folder"/></svg><h2>~/projects</h2>
+        <div class="window__btns"><button class="wbtn wbtn--min" aria-label="Minimize">–</button><button class="wbtn wbtn--max" aria-label="Maximize">□</button><button class="wbtn wbtn--close" aria-label="Close">×</button></div>
       </header>
-      <div class="section__body entry-stack">
-
-        <article class="entry">
-          <div class="entry__side">
-            <span class="entry__period">2026</span>
-            <span class="entry__type">Freelance</span>
+      <div class="window__body window__body--files">
+        <aside class="fm-side" role="group" aria-label="Filter projects">
+          <button class="fm-filter is-active" data-filter="all"><svg class="ico"><use href="#i-folder"/></svg> all/</button>
+          <button class="fm-filter" data-filter="ai"><svg class="ico"><use href="#i-folder"/></svg> ai-nlp/</button>
+          <button class="fm-filter" data-filter="systems"><svg class="ico"><use href="#i-folder"/></svg> systems/</button>
+          <button class="fm-filter" data-filter="hardware"><svg class="ico"><use href="#i-folder"/></svg> hardware/</button>
+          <button class="fm-filter" data-filter="sim"><svg class="ico"><use href="#i-folder"/></svg> simulation/</button>
+        </aside>
+        <div class="fm-main">
+          <div class="fm-grid">
+            <button class="fitem" data-cat="ai" data-open="win-p01"><svg class="ico"><use href="#i-file"/></svg><span class="fitem__name">p01_louvre.proj</span><span class="fitem__desc">Louvre catalogue LLM pipeline</span></button>
+            <button class="fitem" data-cat="systems sim" data-open="win-p02"><svg class="ico"><use href="#i-file"/></svg><span class="fitem__name">p02_mes-audit.proj</span><span class="fitem__desc">MES performance audit</span></button>
+            <button class="fitem" data-cat="systems ai" data-open="win-p03"><svg class="ico"><use href="#i-file"/></svg><span class="fitem__name">p03_smart-cafe.proj</span><span class="fitem__desc">Smart-café platform</span></button>
+            <button class="fitem" data-cat="hardware ai" data-open="win-p04"><svg class="ico"><use href="#i-file"/></svg><span class="fitem__name">p04_so101-arm.proj</span><span class="fitem__desc">Robot learning stack</span></button>
+            <button class="fitem" data-cat="ai" data-open="win-p05"><svg class="ico"><use href="#i-file"/></svg><span class="fitem__name">p05_companion.proj</span><span class="fitem__desc">Safety-framed AI companion</span></button>
+            <button class="fitem" data-cat="systems" data-open="win-p06"><svg class="ico"><use href="#i-file"/></svg><span class="fitem__name">p06_care-network.proj</span><span class="fitem__desc">Care-network platform</span></button>
+            <button class="fitem" data-cat="sim ai" data-open="win-p07"><svg class="ico"><use href="#i-file"/></svg><span class="fitem__name">p07_world-machine.proj</span><span class="fitem__desc">Society simulation engine</span></button>
+            <button class="fitem" data-cat="sim" data-open="win-p08"><svg class="ico"><use href="#i-file"/></svg><span class="fitem__name">p08_electoral.proj</span><span class="fitem__desc">Electoral counterfactual model</span></button>
+            <button class="fitem" data-cat="hardware" data-open="win-p09"><svg class="ico"><use href="#i-file"/></svg><span class="fitem__name">p09_wifi-csi.proj</span><span class="fitem__desc">Wi-Fi sensing / CSI stack</span></button>
+            <button class="fitem fitem--misc" data-cat="all-misc" data-open="win-morework"><svg class="ico"><use href="#i-folder"/></svg><span class="fitem__name">misc/</span><span class="fitem__desc">8 more projects</span></button>
           </div>
-          <div class="entry__main">
-            <h3>Independent Engineering Missions</h3>
-            <p class="entry__org">Technical missions for industrial and social-sector clients</p>
-            <ul>
-              <li>Designed an independent MES performance-audit instrument for a Korean smart-factory subsidy
-                program: read-only recomputation of claimed KPIs from raw MES records, gap analysis of the
-                specification, and concise bilingual technical deliverables (LaTeX, English/Korean).</li>
-              <li>Built the beta of a care-network platform matching isolated elderly caregivers with younger
-                helpers — SvelteKit, PostgreSQL/PostGIS, four user surfaces, a static verification harness
-                and production-build checks.</li>
-              <li>Authored the product specification for a French-learning application: CEFR-calibrated
-                (A1→C2) engagement loop, LLM tutor design, and a full feature inventory consolidated from
-                two legacy codebases.</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="entry">
-          <div class="entry__side">
-            <span class="entry__period">2024</span>
-            <span class="entry__type">Internship</span>
-          </div>
-          <div class="entry__main">
-            <h3>NLP &amp; Data Collection Internship</h3>
-            <p class="entry__org">CERES — Sorbonne Université</p>
-            <ul>
-              <li>Collected, structured and analyzed political and textual data from online sources.</li>
-              <li>Developed Python scripts for extraction, normalization and corpus-oriented analysis.</li>
-              <li>Worked on categorization, data representation and OCR over documentary corpora.</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="entry">
-          <div class="entry__side">
-            <span class="entry__period">2023</span>
-            <span class="entry__type">University</span>
-          </div>
-          <div class="entry__main">
-            <h3>Team Project Coordination</h3>
-            <p class="entry__org">Sorbonne Université</p>
-            <ul>
-              <li>Coordinated a 3-person team on a design and implementation project: task allocation,
-                progress tracking and technical scoping.</li>
-            </ul>
-          </div>
-        </article>
-
+          <p class="fm-status"><span id="fm-count">10</span> items · click a file to open it</p>
+        </div>
       </div>
+      <div class="window__resize" aria-hidden="true"></div>
     </section>
 
-    <!-- ============ 03 PROJECTS ============ -->
-    <section class="section reveal" id="projects">
-      <header class="section__head">
-        <span class="section__index" aria-hidden="true">03</span>
-        <h2>Selected Projects</h2>
+    <!-- project detail windows -->
+    <section class="window window--proj" id="win-p01" data-title="p01_louvre.proj" data-icon="i-file" data-w="560" data-h="500" aria-label="Project: Louvre pipeline">
+      <header class="window__bar"><svg class="ico"><use href="#i-file"/></svg><h2>p01_louvre.proj</h2>
+        <div class="window__btns"><button class="wbtn wbtn--min" aria-label="Minimize">–</button><button class="wbtn wbtn--max" aria-label="Maximize">□</button><button class="wbtn wbtn--close" aria-label="Close">×</button></div>
       </header>
-
-      <div class="filters" role="group" aria-label="Filter projects by domain">
-        <button class="chip is-active" data-filter="all" type="button">All</button>
-        <button class="chip" data-filter="ai" type="button">AI &amp; NLP</button>
-        <button class="chip" data-filter="systems" type="button">Platforms &amp; Systems</button>
-        <button class="chip" data-filter="hardware" type="button">Robotics &amp; Hardware</button>
-        <button class="chip" data-filter="sim" type="button">Data &amp; Simulation</button>
+      <div class="window__body prose">
+        <p class="ptag">AI &amp; NLP · P-01</p>
+        <h3>Louvre Catalogue LLM Pipeline</h3>
+        <p class="pctx">Master's thesis — Sorbonne Université</p>
+        <p>End-to-end normalization of 51,123 artifact records from the Louvre's public API: retrieval by
+          ARK identifier, LLM-based normalization of heterogeneous fields, geocoding and an interactive
+          map. Eleven models compared across 44 configurations (zero-shot, few-shot, NER pre-processing)
+          against a hand-annotated gold set of 300 records — with retry logic, controlled vocabularies
+          and separate error journaling so no failure passes silently.</p>
+        <p class="pmetric">✳ 0.961 macro-F1 — a 31B model matching 675B mixture-of-experts</p>
+        <p class="pstack">Python · Ollama · LangExtract · LaTeX</p>
       </div>
+      <div class="window__resize" aria-hidden="true"></div>
+    </section>
 
-      <div class="project-grid">
-
-        <article class="project project--lead" data-cat="ai">
-          <div class="project__top"><span class="project__tag">AI &amp; NLP</span><span class="project__num">P-01</span></div>
-          <h3>Louvre Catalogue LLM Pipeline</h3>
-          <p class="project__context">Master's thesis — Sorbonne Université</p>
-          <div class="project__body">
-            <p>
-              End-to-end normalization of 51,123 artifact records from the Louvre's public API: retrieval by
-              ARK identifier, LLM-based normalization of heterogeneous fields, geocoding and an interactive
-              map. Eleven models compared across 44 configurations (zero-shot, few-shot, NER pre-processing)
-              against a hand-annotated gold set of 300 records — with retry logic, controlled vocabularies
-              and separate error journaling so no failure passes silently.
-            </p>
-          </div>
-          <p class="project__metric">0.961 macro-F1 — a 31B model matching 675B mixture-of-experts</p>
-          <ul class="project__stack"><li>Python</li><li>Ollama</li><li>LangExtract</li><li>LaTeX</li></ul>
-        </article>
-
-        <article class="project" data-cat="systems sim">
-          <div class="project__top"><span class="project__tag">Industrial Data</span><span class="project__num">P-02</span></div>
-          <h3>MES Performance Audit Instrument</h3>
-          <p class="project__context">Freelance mission — Korean smart-factory program</p>
-          <div class="project__body">
-            <p>
-              A read-only external auditor that independently recomputes the performance KPIs a Manufacturing
-              Execution System claims, from that system's own raw records — designed to verify whether gains
-              promised in a subsidy dossier are real. Included a critical reading of a 130-page specification,
-              identification of indicators declared "unmeasurable", and the data-granularity questions that
-              decide whether KPIs are computable at all.
-            </p>
-          </div>
-          <p class="project__metric">5 KPIs · measurement, not optimization</p>
-          <ul class="project__stack"><li>Systems analysis</li><li>KPI verification</li><li>LaTeX / TikZ</li><li>EN / KO</li></ul>
-        </article>
-
-        <article class="project" data-cat="systems ai">
-          <div class="project__top"><span class="project__tag">Platform</span><span class="project__num">P-03</span></div>
-          <h3>Smart-Café Operating Platform</h3>
-          <p class="project__context">Multi-product platform — single account, single hub</p>
-          <div class="project__body">
-            <p>
-              A unified platform for café operations: in-store vision intelligence that adapts to existing
-              cameras and runs in real time on a CPU-only laptop, never exporting an image (privacy by
-              design); daily operations tooling (checklists, planning, stock, alerts); and a market
-              intelligence product built on public data. Three-plane architecture with contract membranes,
-              measured performance dossiers and reproducible cold-start demos.
-            </p>
-          </div>
-          <p class="project__metric">Real-time vision on CPU — aggregates only, no image leaves the device</p>
-          <ul class="project__stack"><li>Python</li><li>Cloudflare Pages</li><li>Edge / on-prem</li><li>Benchmarked</li></ul>
-        </article>
-
-        <article class="project" data-cat="hardware ai">
-          <div class="project__top"><span class="project__tag">Robotics</span><span class="project__num">P-04</span></div>
-          <h3>Robot Learning Stack — SO-101 Arm</h3>
-          <p class="project__context">Sim-first robot learning, then a physical arm</p>
-          <div class="project__body">
-            <p>
-              Full record → train → eval pipeline with LeRobot and MuJoCo, run without a local GPU: recording
-              and evaluation on CPU, training on free cloud GPUs via code-first script kernels, checkpoints on
-              the Hugging Face Hub. Culminates in a voice-driven vision-language-action model and a cockpit
-              app where a cloud VLM does the spatial reasoning while execution stays local, bounded by inverse
-              kinematics and safety guards.
-            </p>
-          </div>
-          <p class="project__metric">Sim → real transfer with 0 € of paid compute</p>
-          <ul class="project__stack"><li>LeRobot</li><li>MuJoCo</li><li>SmolVLA</li><li>Whisper</li></ul>
-        </article>
-
-        <article class="project" data-cat="ai">
-          <div class="project__top"><span class="project__tag">AI Safety</span><span class="project__num">P-05</span></div>
-          <h3>Safety-Framed AI Companion</h3>
-          <p class="project__context">Conversational AI for a vulnerable user — safety as the core spec</p>
-          <div class="project__body">
-            <p>
-              A multi-voice LLM pipeline (twelve specialist voices → architect → a final guardian pass) that
-              speaks its user's poetic universe without ever validating a harmful drift. The guardian is the
-              invariant: red-teamed against manipulation prompts, injected delusional corpora and escalating
-              model power, with the vital cases re-read by hand and tested for variance. Includes bounded
-              memory, RAG over personal documents, PBKDF2 auth and PWA packaging.
-            </p>
-          </div>
-          <p class="project__metric">44–45 / 45 on the full red-team suite — 0 hard failures</p>
-          <ul class="project__stack"><li>TypeScript</li><li>Cloudflare Workers</li><li>Ollama</li><li>RAG</li></ul>
-        </article>
-
-        <article class="project" data-cat="systems">
-          <div class="project__top"><span class="project__tag">Platform</span><span class="project__num">P-06</span></div>
-          <h3>Care-Network Platform</h3>
-          <p class="project__context">Freelance mission — social-sector startup beta</p>
-          <div class="project__body">
-            <p>
-              A platform matching elderly, often isolated caregivers with younger helpers who visit regularly
-              — the design bet being that help becomes acceptable when it flows through transmission rather
-              than assistance. Four user surfaces, geographic matching, a demonstration review site, and an
-              engineering culture of guard-rails: static verification rules, HTTP leak checks and documented
-              production pitfalls.
-            </p>
-          </div>
-          <p class="project__metric">17-screen build with a static verification harness</p>
-          <ul class="project__stack"><li>SvelteKit</li><li>PostgreSQL</li><li>PostGIS</li><li>Node</li></ul>
-        </article>
-
-        <article class="project" data-cat="sim ai">
-          <div class="project__top"><span class="project__tag">Simulation</span><span class="project__num">P-07</span></div>
-          <h3>Society Simulation Engine</h3>
-          <p class="project__context">Research prototype — a "world machine"</p>
-          <div class="project__body">
-            <p>
-              A simulation engine for an entire society — social, economic, political, ideological, cognitive
-              — that evolves on its own. Neither pure determinism (which drifts) nor pure LLM (which
-              hallucinates): every kernel, including the LLM, emits only typed pressures, resolved by
-              least-violation under a hard feasibility envelope, so plausibility is coerced by structure.
-            </p>
-          </div>
-          <p class="project__metric">Multi-kernel · typed pressures · feasibility envelope</p>
-          <ul class="project__stack"><li>Python</li><li>Multi-agent</li><li>LLM-in-the-loop</li></ul>
-        </article>
-
-        <article class="project" data-cat="sim">
-          <div class="project__top"><span class="project__tag">Modeling</span><span class="project__num">P-08</span></div>
-          <h3>Electoral Counterfactual Model</h3>
-          <p class="project__context">Exploratory exercise — explicitly not a prediction tool</p>
-          <div class="project__body">
-            <p>
-              A counterfactual simulation of a hypothetical 2027 presidential candidacy, calibrated on the
-              five previous French elections with leave-one-out validation, Latin-hypercube sensitivity
-              analysis and CMA-ES optimization. Includes an explicit audit of the model's own optimistic
-              biases — the corrected version honestly reports structural quasi-impossibility.
-            </p>
-          </div>
-          <p class="project__metric">Leave-one-out MAE 4.43 pts — bias audit included</p>
-          <ul class="project__stack"><li>Python</li><li>CMA-ES</li><li>LHS</li><li>Calibration</li></ul>
-        </article>
-
-        <article class="project" data-cat="hardware">
-          <div class="project__top"><span class="project__tag">Hardware</span><span class="project__num">P-09</span></div>
-          <h3>Wi-Fi Sensing / CSI Stack</h3>
-          <p class="project__context">Software-defined sensing on commodity hardware</p>
-          <div class="project__body">
-            <p>
-              A Linux stack for Wi-Fi channel-state-information sensing on an Intel AX210: capture ingestion,
-              normalization into datasets, windowing, machine-learning baselines for presence and coarse
-              activity detection, and terminal/web dashboards — working at the interface of software, drivers
-              and radio hardware.
-            </p>
-          </div>
-          <p class="project__metric">Presence detection from radio signals alone</p>
-          <ul class="project__stack"><li>Python</li><li>Linux</li><li>Signal processing</li><li>scikit-learn</li></ul>
-        </article>
-
+    <section class="window window--proj" id="win-p02" data-title="p02_mes-audit.proj" data-icon="i-file" data-w="560" data-h="500" aria-label="Project: MES audit">
+      <header class="window__bar"><svg class="ico"><use href="#i-file"/></svg><h2>p02_mes-audit.proj</h2>
+        <div class="window__btns"><button class="wbtn wbtn--min" aria-label="Minimize">–</button><button class="wbtn wbtn--max" aria-label="Maximize">□</button><button class="wbtn wbtn--close" aria-label="Close">×</button></div>
+      </header>
+      <div class="window__body prose">
+        <p class="ptag">Industrial data · P-02</p>
+        <h3>MES Performance Audit Instrument</h3>
+        <p class="pctx">Freelance mission — Korean smart-factory program</p>
+        <p>A read-only external auditor that independently recomputes the performance KPIs a Manufacturing
+          Execution System claims, from that system's own raw records — designed to verify whether gains
+          promised in a subsidy dossier are real. Included a critical reading of a 130-page specification,
+          identification of indicators declared "unmeasurable", and the data-granularity questions that
+          decide whether KPIs are computable at all.</p>
+        <p class="pmetric">✳ 5 KPIs · measurement, not optimization</p>
+        <p class="pstack">Systems analysis · KPI verification · LaTeX / TikZ · EN / KO</p>
       </div>
+      <div class="window__resize" aria-hidden="true"></div>
+    </section>
 
-      <div class="more-work">
-        <h3 class="more-work__title">Also in this issue</h3>
-        <ul class="more-work__list">
+    <section class="window window--proj" id="win-p03" data-title="p03_smart-cafe.proj" data-icon="i-file" data-w="560" data-h="500" aria-label="Project: Smart-café platform">
+      <header class="window__bar"><svg class="ico"><use href="#i-file"/></svg><h2>p03_smart-cafe.proj</h2>
+        <div class="window__btns"><button class="wbtn wbtn--min" aria-label="Minimize">–</button><button class="wbtn wbtn--max" aria-label="Maximize">□</button><button class="wbtn wbtn--close" aria-label="Close">×</button></div>
+      </header>
+      <div class="window__body prose">
+        <p class="ptag">Platform · P-03</p>
+        <h3>Smart-Café Operating Platform</h3>
+        <p class="pctx">Multi-product platform — single account, single hub</p>
+        <p>A unified platform for café operations: in-store vision intelligence that adapts to existing
+          cameras and runs in real time on a CPU-only laptop, never exporting an image (privacy by
+          design); daily operations tooling (checklists, planning, stock, alerts); and a market
+          intelligence product built on public data. Three-plane architecture with contract membranes,
+          measured performance dossiers and reproducible cold-start demos.</p>
+        <p class="pmetric">✳ Real-time vision on CPU — aggregates only, no image leaves the device</p>
+        <p class="pstack">Python · Cloudflare Pages · Edge / on-prem · Benchmarked</p>
+      </div>
+      <div class="window__resize" aria-hidden="true"></div>
+    </section>
+
+    <section class="window window--proj" id="win-p04" data-title="p04_so101-arm.proj" data-icon="i-file" data-w="560" data-h="500" aria-label="Project: Robot learning stack">
+      <header class="window__bar"><svg class="ico"><use href="#i-file"/></svg><h2>p04_so101-arm.proj</h2>
+        <div class="window__btns"><button class="wbtn wbtn--min" aria-label="Minimize">–</button><button class="wbtn wbtn--max" aria-label="Maximize">□</button><button class="wbtn wbtn--close" aria-label="Close">×</button></div>
+      </header>
+      <div class="window__body prose">
+        <p class="ptag">Robotics · P-04</p>
+        <h3>Robot Learning Stack — SO-101 Arm</h3>
+        <p class="pctx">Sim-first robot learning, then a physical arm</p>
+        <p>Full record → train → eval pipeline with LeRobot and MuJoCo, run without a local GPU: recording
+          and evaluation on CPU, training on free cloud GPUs via code-first script kernels, checkpoints on
+          the Hugging Face Hub. Culminates in a voice-driven vision-language-action model and a cockpit
+          app where a cloud VLM does the spatial reasoning while execution stays local, bounded by inverse
+          kinematics and safety guards.</p>
+        <p class="pmetric">✳ Sim → real transfer with 0 € of paid compute</p>
+        <p class="pstack">LeRobot · MuJoCo · SmolVLA · Whisper</p>
+      </div>
+      <div class="window__resize" aria-hidden="true"></div>
+    </section>
+
+    <section class="window window--proj" id="win-p05" data-title="p05_companion.proj" data-icon="i-file" data-w="560" data-h="500" aria-label="Project: AI companion">
+      <header class="window__bar"><svg class="ico"><use href="#i-file"/></svg><h2>p05_companion.proj</h2>
+        <div class="window__btns"><button class="wbtn wbtn--min" aria-label="Minimize">–</button><button class="wbtn wbtn--max" aria-label="Maximize">□</button><button class="wbtn wbtn--close" aria-label="Close">×</button></div>
+      </header>
+      <div class="window__body prose">
+        <p class="ptag">AI safety · P-05</p>
+        <h3>Safety-Framed AI Companion</h3>
+        <p class="pctx">Conversational AI for a vulnerable user — safety as the core spec</p>
+        <p>A multi-voice LLM pipeline (twelve specialist voices → architect → a final guardian pass) that
+          speaks its user's poetic universe without ever validating a harmful drift. The guardian is the
+          invariant: red-teamed against manipulation prompts, injected delusional corpora and escalating
+          model power, with the vital cases re-read by hand and tested for variance. Includes bounded
+          memory, RAG over personal documents, PBKDF2 auth and PWA packaging.</p>
+        <p class="pmetric">✳ 44–45 / 45 on the full red-team suite — 0 hard failures</p>
+        <p class="pstack">TypeScript · Cloudflare Workers · Ollama · RAG</p>
+      </div>
+      <div class="window__resize" aria-hidden="true"></div>
+    </section>
+
+    <section class="window window--proj" id="win-p06" data-title="p06_care-network.proj" data-icon="i-file" data-w="560" data-h="500" aria-label="Project: Care-network platform">
+      <header class="window__bar"><svg class="ico"><use href="#i-file"/></svg><h2>p06_care-network.proj</h2>
+        <div class="window__btns"><button class="wbtn wbtn--min" aria-label="Minimize">–</button><button class="wbtn wbtn--max" aria-label="Maximize">□</button><button class="wbtn wbtn--close" aria-label="Close">×</button></div>
+      </header>
+      <div class="window__body prose">
+        <p class="ptag">Platform · P-06</p>
+        <h3>Care-Network Platform</h3>
+        <p class="pctx">Freelance mission — social-sector startup beta</p>
+        <p>A platform matching elderly, often isolated caregivers with younger helpers who visit regularly
+          — the design bet being that help becomes acceptable when it flows through transmission rather
+          than assistance. Four user surfaces, geographic matching, a demonstration review site, and an
+          engineering culture of guard-rails: static verification rules, HTTP leak checks and documented
+          production pitfalls.</p>
+        <p class="pmetric">✳ 17-screen build with a static verification harness</p>
+        <p class="pstack">SvelteKit · PostgreSQL · PostGIS · Node</p>
+      </div>
+      <div class="window__resize" aria-hidden="true"></div>
+    </section>
+
+    <section class="window window--proj" id="win-p07" data-title="p07_world-machine.proj" data-icon="i-file" data-w="560" data-h="500" aria-label="Project: Society simulation">
+      <header class="window__bar"><svg class="ico"><use href="#i-file"/></svg><h2>p07_world-machine.proj</h2>
+        <div class="window__btns"><button class="wbtn wbtn--min" aria-label="Minimize">–</button><button class="wbtn wbtn--max" aria-label="Maximize">□</button><button class="wbtn wbtn--close" aria-label="Close">×</button></div>
+      </header>
+      <div class="window__body prose">
+        <p class="ptag">Simulation · P-07</p>
+        <h3>Society Simulation Engine</h3>
+        <p class="pctx">Research prototype — a "world machine"</p>
+        <p>A simulation engine for an entire society — social, economic, political, ideological, cognitive
+          — that evolves on its own. Neither pure determinism (which drifts) nor pure LLM (which
+          hallucinates): every kernel, including the LLM, emits only typed pressures, resolved by
+          least-violation under a hard feasibility envelope, so plausibility is coerced by structure.</p>
+        <p class="pmetric">✳ Multi-kernel · typed pressures · feasibility envelope</p>
+        <p class="pstack">Python · Multi-agent · LLM-in-the-loop</p>
+      </div>
+      <div class="window__resize" aria-hidden="true"></div>
+    </section>
+
+    <section class="window window--proj" id="win-p08" data-title="p08_electoral.proj" data-icon="i-file" data-w="560" data-h="500" aria-label="Project: Electoral model">
+      <header class="window__bar"><svg class="ico"><use href="#i-file"/></svg><h2>p08_electoral.proj</h2>
+        <div class="window__btns"><button class="wbtn wbtn--min" aria-label="Minimize">–</button><button class="wbtn wbtn--max" aria-label="Maximize">□</button><button class="wbtn wbtn--close" aria-label="Close">×</button></div>
+      </header>
+      <div class="window__body prose">
+        <p class="ptag">Modeling · P-08</p>
+        <h3>Electoral Counterfactual Model</h3>
+        <p class="pctx">Exploratory exercise — explicitly not a prediction tool</p>
+        <p>A counterfactual simulation of a hypothetical 2027 presidential candidacy, calibrated on the
+          five previous French elections with leave-one-out validation, Latin-hypercube sensitivity
+          analysis and CMA-ES optimization. Includes an explicit audit of the model's own optimistic
+          biases — the corrected version honestly reports structural quasi-impossibility.</p>
+        <p class="pmetric">✳ Leave-one-out MAE 4.43 pts — bias audit included</p>
+        <p class="pstack">Python · CMA-ES · LHS · Calibration</p>
+      </div>
+      <div class="window__resize" aria-hidden="true"></div>
+    </section>
+
+    <section class="window window--proj" id="win-p09" data-title="p09_wifi-csi.proj" data-icon="i-file" data-w="560" data-h="500" aria-label="Project: Wi-Fi sensing">
+      <header class="window__bar"><svg class="ico"><use href="#i-file"/></svg><h2>p09_wifi-csi.proj</h2>
+        <div class="window__btns"><button class="wbtn wbtn--min" aria-label="Minimize">–</button><button class="wbtn wbtn--max" aria-label="Maximize">□</button><button class="wbtn wbtn--close" aria-label="Close">×</button></div>
+      </header>
+      <div class="window__body prose">
+        <p class="ptag">Hardware · P-09</p>
+        <h3>Wi-Fi Sensing / CSI Stack</h3>
+        <p class="pctx">Software-defined sensing on commodity hardware</p>
+        <p>A Linux stack for Wi-Fi channel-state-information sensing on an Intel AX210: capture ingestion,
+          normalization into datasets, windowing, machine-learning baselines for presence and coarse
+          activity detection, and terminal/web dashboards — working at the interface of software, drivers
+          and radio hardware.</p>
+        <p class="pmetric">✳ Presence detection from radio signals alone</p>
+        <p class="pstack">Python · Linux · Signal processing · scikit-learn</p>
+      </div>
+      <div class="window__resize" aria-hidden="true"></div>
+    </section>
+
+    <section class="window" id="win-morework" data-title="~/projects/misc" data-icon="i-folder" data-w="620" data-h="480" aria-label="More projects">
+      <header class="window__bar"><svg class="ico"><use href="#i-folder"/></svg><h2>~/projects/misc</h2>
+        <div class="window__btns"><button class="wbtn wbtn--min" aria-label="Minimize">–</button><button class="wbtn wbtn--max" aria-label="Maximize">□</button><button class="wbtn wbtn--close" aria-label="Close">×</button></div>
+      </header>
+      <div class="window__body prose">
+        <ul class="mlist">
           <li><strong>Multilingual ASR pipeline</strong> — audio preparation, Whisper transcription, model comparison and structured reporting on heterogeneous oral corpora.</li>
           <li><strong>Dementia detection from speech</strong> — binary classification on the DementiaBank Pitt corpus ("cookie theft" task).</li>
           <li><strong>Political classification on TEI-XML corpora</strong> — supervised TF-IDF pipelines with execution profiles, data audits and reproducible comparisons.</li>
@@ -342,125 +330,230 @@
           <li><strong>RC engineering</strong> — design, build and tuning of a 200+ km/h RC car; active-aero diffuser parts modeled in FreeCAD.</li>
         </ul>
       </div>
+      <div class="window__resize" aria-hidden="true"></div>
     </section>
 
-    <!-- ============ 04 SKILLS ============ -->
-    <section class="section reveal" id="skills">
-      <header class="section__head">
-        <span class="section__index" aria-hidden="true">04</span>
-        <h2>Skills</h2>
+    <section class="window" id="win-experience" data-title="experience.log" data-icon="i-log" data-w="640" data-h="520" aria-label="Experience">
+      <header class="window__bar"><svg class="ico"><use href="#i-log"/></svg><h2>experience.log</h2>
+        <div class="window__btns"><button class="wbtn wbtn--min" aria-label="Minimize">–</button><button class="wbtn wbtn--max" aria-label="Maximize">□</button><button class="wbtn wbtn--close" aria-label="Close">×</button></div>
       </header>
-      <div class="section__body spec-list">
-        <div class="spec">
-          <h3 class="spec__label">Languages</h3>
-          <p>Python · TypeScript / JavaScript · R · C++ · Java · SQL · LaTeX</p>
-        </div>
-        <div class="spec">
-          <h3 class="spec__label">AI / Machine Learning</h3>
-          <p>Supervised classification · feature engineering · model evaluation &amp; benchmarking · LLM inference (Ollama, cloud APIs) · prompt design · RAG &amp; embeddings · NER · red-teaming / safety evaluation</p>
-        </div>
-        <div class="spec">
-          <h3 class="spec__label">NLP / Speech</h3>
-          <p>Corpus analysis · text normalization · ASR (Whisper) · OCR · TEI-XML · lexicometry · scikit-learn</p>
-        </div>
-        <div class="spec">
-          <h3 class="spec__label">Backend &amp; Platforms</h3>
-          <p>FastAPI · Flask · SvelteKit · Next.js · Node · SQLite · PostgreSQL / PostGIS · Cloudflare Workers &amp; Pages</p>
-        </div>
-        <div class="spec">
-          <h3 class="spec__label">Methods</h3>
-          <p>Reproducible pipelines · gold-data evaluation · statistical validation · benchmarking under identical conditions · technical documentation · bilingual deliverables</p>
-        </div>
-        <div class="spec">
-          <h3 class="spec__label">Systems &amp; Tools</h3>
-          <p>Linux · Git · Docker · Makefile workflows · ffmpeg · pytest · MuJoCo / LeRobot · FreeCAD</p>
-        </div>
-        <div class="spec">
-          <h3 class="spec__label">Hardware &amp; Embedded</h3>
-          <p>Raspberry Pi · ESP32 · Jetson (Nano, Orin) · PC assembly &amp; repair · brushless / RC systems · hardware integration &amp; maintenance</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ 05 EDUCATION ============ -->
-    <section class="section reveal" id="education">
-      <header class="section__head">
-        <span class="section__index" aria-hidden="true">05</span>
-        <h2>Education</h2>
-      </header>
-      <div class="section__body timeline">
-        <article class="timeline__item">
-          <span class="timeline__year">2025 — 2027</span>
-          <div>
-            <h3>Master's in NLP &amp; AI Applications</h3>
-            <p>Sorbonne Université — M1 validated 2026, currently in M2</p>
-          </div>
-        </article>
-        <article class="timeline__item">
-          <span class="timeline__year">2022 — 2025</span>
-          <div>
-            <h3>Bachelor's in Language Sciences, Computer Science Track</h3>
-            <p>Sorbonne Université</p>
-          </div>
-        </article>
-        <article class="timeline__item">
-          <span class="timeline__year">2022</span>
-          <div>
-            <h3>Baccalauréat</h3>
-            <p>Lycée Condorcet, Paris</p>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <!-- ============ 06 LANGUAGES & INTERESTS ============ -->
-    <section class="section reveal" id="languages">
-      <header class="section__head">
-        <span class="section__index" aria-hidden="true">06</span>
-        <h2>Languages &amp; Interests</h2>
-      </header>
-      <div class="section__body section__body--split">
-        <div>
-          <ul class="lang-list">
-            <li><strong>French</strong><span class="lang-list__dots" aria-hidden="true"></span><span>Native</span></li>
-            <li><strong>English</strong><span class="lang-list__dots" aria-hidden="true"></span><span>B2 / C1 — working proficiency</span></li>
-            <li><strong>Italian</strong><span class="lang-list__dots" aria-hidden="true"></span><span>B2</span></li>
+      <div class="window__body prose">
+        <article class="xp">
+          <p class="xp__head"><span class="xp__year">2026</span><span class="xp__type">freelance</span></p>
+          <h3>Independent Engineering Missions</h3>
+          <p class="pctx">Technical missions for industrial and social-sector clients</p>
+          <ul>
+            <li>Designed an independent MES performance-audit instrument for a Korean smart-factory subsidy
+              program: read-only recomputation of claimed KPIs from raw MES records, gap analysis of the
+              specification, and concise bilingual technical deliverables (LaTeX, English/Korean).</li>
+            <li>Built the beta of a care-network platform matching isolated elderly caregivers with younger
+              helpers — SvelteKit, PostgreSQL/PostGIS, four user surfaces, a static verification harness
+              and production-build checks.</li>
+            <li>Authored the product specification for a French-learning application: CEFR-calibrated
+              (A1→C2) engagement loop, LLM tutor design, and a full feature inventory consolidated from
+              two legacy codebases.</li>
           </ul>
-        </div>
-        <div>
-          <p class="interests">
-            Software architecture · embedded systems and hardware · high-speed RC engineering ·
-            CAD and model-making · cycling and skiing · drawing
-          </p>
-        </div>
+        </article>
+        <article class="xp">
+          <p class="xp__head"><span class="xp__year">2024</span><span class="xp__type">internship</span></p>
+          <h3>NLP &amp; Data Collection Internship</h3>
+          <p class="pctx">CERES — Sorbonne Université</p>
+          <ul>
+            <li>Collected, structured and analyzed political and textual data from online sources.</li>
+            <li>Developed Python scripts for extraction, normalization and corpus-oriented analysis.</li>
+            <li>Worked on categorization, data representation and OCR over documentary corpora.</li>
+          </ul>
+        </article>
+        <article class="xp">
+          <p class="xp__head"><span class="xp__year">2023</span><span class="xp__type">university</span></p>
+          <h3>Team Project Coordination</h3>
+          <p class="pctx">Sorbonne Université</p>
+          <ul>
+            <li>Coordinated a 3-person team on a design and implementation project: task allocation,
+              progress tracking and technical scoping.</li>
+          </ul>
+        </article>
       </div>
+      <div class="window__resize" aria-hidden="true"></div>
     </section>
 
-    <!-- ============ 07 CONTACT ============ -->
-    <section class="section reveal" id="contact">
-      <header class="section__head">
-        <span class="section__index" aria-hidden="true">07</span>
-        <h2>Contact</h2>
+    <section class="window" id="win-skills" data-title="skills.sys" data-icon="i-chip" data-w="640" data-h="520" aria-label="Skills">
+      <header class="window__bar"><svg class="ico"><use href="#i-chip"/></svg><h2>skills.sys</h2>
+        <div class="window__btns"><button class="wbtn wbtn--min" aria-label="Minimize">–</button><button class="wbtn wbtn--max" aria-label="Maximize">□</button><button class="wbtn wbtn--close" aria-label="Close">×</button></div>
       </header>
-      <div class="section__body contact">
-        <p class="contact__lead">Open to M2 internships, freelance missions and technical collaborations. Write to me —</p>
-        <a class="contact__mail" href="mailto:vergneadrien65@gmail.com">vergneadrien65@gmail.com</a>
-        <ul class="contact__links">
-          <li><a href="tel:+33786985160">+33 7 86 98 51 60</a></li>
-          <li><a href="https://www.linkedin.com/in/adrien-vergne-542297161" target="_blank" rel="noopener noreferrer">LinkedIn <svg class="ext" width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 8 8 2M3.5 2H8v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a></li>
-          <li><a href="https://github.com/TeaS0710" target="_blank" rel="noopener noreferrer">GitHub <svg class="ext" width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 8 8 2M3.5 2H8v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a></li>
-          <li>Saint-Maur-des-Fossés, France</li>
-        </ul>
+      <div class="window__body prose">
+        <dl class="kv kv--rows">
+          <div><dt>Languages</dt><dd>Python · TypeScript / JavaScript · R · C++ · Java · SQL · LaTeX</dd></div>
+          <div><dt>AI / ML</dt><dd>Supervised classification · feature engineering · model evaluation &amp; benchmarking · LLM inference (Ollama, cloud APIs) · prompt design · RAG &amp; embeddings · NER · red-teaming / safety evaluation</dd></div>
+          <div><dt>NLP / Speech</dt><dd>Corpus analysis · text normalization · ASR (Whisper) · OCR · TEI-XML · lexicometry · scikit-learn</dd></div>
+          <div><dt>Backend</dt><dd>FastAPI · Flask · SvelteKit · Next.js · Node · SQLite · PostgreSQL / PostGIS · Cloudflare Workers &amp; Pages</dd></div>
+          <div><dt>Methods</dt><dd>Reproducible pipelines · gold-data evaluation · statistical validation · benchmarking under identical conditions · technical documentation · bilingual deliverables</dd></div>
+          <div><dt>Systems</dt><dd>Linux · Git · Docker · Makefile workflows · ffmpeg · pytest · MuJoCo / LeRobot · FreeCAD</dd></div>
+          <div><dt>Hardware</dt><dd>Raspberry Pi · ESP32 · Jetson (Nano, Orin) · PC assembly &amp; repair · brushless / RC systems · hardware integration &amp; maintenance</dd></div>
+        </dl>
       </div>
+      <div class="window__resize" aria-hidden="true"></div>
+    </section>
+
+    <section class="window" id="win-education" data-title="education.db" data-icon="i-cap" data-w="560" data-h="430" aria-label="Education">
+      <header class="window__bar"><svg class="ico"><use href="#i-cap"/></svg><h2>education.db</h2>
+        <div class="window__btns"><button class="wbtn wbtn--min" aria-label="Minimize">–</button><button class="wbtn wbtn--max" aria-label="Maximize">□</button><button class="wbtn wbtn--close" aria-label="Close">×</button></div>
+      </header>
+      <div class="window__body prose">
+        <article class="xp">
+          <p class="xp__head"><span class="xp__year">2025 — 2027</span></p>
+          <h3>Master's in NLP &amp; AI Applications</h3>
+          <p class="pctx">Sorbonne Université — M1 validated 2026, currently in M2</p>
+        </article>
+        <article class="xp">
+          <p class="xp__head"><span class="xp__year">2022 — 2025</span></p>
+          <h3>Bachelor's in Language Sciences, Computer Science Track</h3>
+          <p class="pctx">Sorbonne Université</p>
+        </article>
+        <article class="xp">
+          <p class="xp__head"><span class="xp__year">2022</span></p>
+          <h3>Baccalauréat</h3>
+          <p class="pctx">Lycée Condorcet, Paris</p>
+        </article>
+        <p class="hint">Spoken languages: French (native) · English (B2/C1) · Italian (B2)</p>
+      </div>
+      <div class="window__resize" aria-hidden="true"></div>
+    </section>
+
+    <section class="window" id="win-contact" data-title="contact.mail" data-icon="i-mail" data-w="520" data-h="420" aria-label="Contact">
+      <header class="window__bar"><svg class="ico"><use href="#i-mail"/></svg><h2>contact.mail</h2>
+        <div class="window__btns"><button class="wbtn wbtn--min" aria-label="Minimize">–</button><button class="wbtn wbtn--max" aria-label="Maximize">□</button><button class="wbtn wbtn--close" aria-label="Close">×</button></div>
+      </header>
+      <div class="window__body prose">
+        <h3>Write to me <span class="star">✳</span></h3>
+        <p class="lead">Open to M2 internships, freelance missions and technical collaborations.</p>
+        <a class="mail-big" href="mailto:vergneadrien65@gmail.com">vergneadrien65@gmail.com</a>
+        <dl class="kv">
+          <div><dt>Phone</dt><dd><a href="tel:+33786985160">+33 7 86 98 51 60</a></dd></div>
+          <div><dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/adrien-vergne-542297161" target="_blank" rel="noopener noreferrer">adrien-vergne-542297161</a></dd></div>
+          <div><dt>GitHub</dt><dd><a href="https://github.com/TeaS0710" target="_blank" rel="noopener noreferrer">TeaS0710</a></dd></div>
+          <div><dt>Location</dt><dd>Saint-Maur-des-Fossés, France</dd></div>
+        </dl>
+      </div>
+      <div class="window__resize" aria-hidden="true"></div>
+    </section>
+
+    <section class="window" id="win-cv" data-title="cv_adrien_vergne.pdf" data-icon="i-pdf" data-w="760" data-h="560" aria-label="CV document">
+      <header class="window__bar"><svg class="ico"><use href="#i-pdf"/></svg><h2>cv_adrien_vergne.pdf</h2>
+        <div class="window__btns"><button class="wbtn wbtn--min" aria-label="Minimize">–</button><button class="wbtn wbtn--max" aria-label="Maximize">□</button><button class="wbtn wbtn--close" aria-label="Close">×</button></div>
+      </header>
+      <div class="window__body window__body--doc">
+        <div class="doc" id="cv-doc">
+          <div class="doc__toolbar"><button class="btn btn--accent" id="print-cv" type="button">Print / save as PDF</button></div>
+          <header class="doc__head">
+            <h3>Adrien Vergne</h3>
+            <p class="doc__role">AI &amp; NLP Engineering — Python · Machine Learning · Applied Systems</p>
+            <p class="doc__meta">Saint-Maur-des-Fossés, France · +33 7 86 98 51 60 · vergneadrien65@gmail.com ·
+              linkedin.com/in/adrien-vergne-542297161 · github.com/TeaS0710</p>
+          </header>
+
+          <h4>Profile</h4>
+          <p>Master's student at Sorbonne Université (M2, NLP &amp; AI applications) with training in software
+            engineering, machine learning and natural language processing. Real deliveries across data
+            pipelines, supervised classification, LLM inference and evaluation, ASR/OCR, API and platform
+            development, and embedded-oriented prototyping. Every claim measured: gold-data evaluation,
+            reproducible benchmarks, red-teamed safety, logged failures.</p>
+
+          <h4>Experience</h4>
+          <p><strong>2026 — Independent engineering missions (freelance).</strong> MES performance-audit
+            instrument for a Korean smart-factory subsidy program (read-only KPI recomputation, bilingual
+            EN/KO LaTeX deliverables); beta of a care-network platform (SvelteKit, PostgreSQL/PostGIS, four
+            surfaces, verification harness); product specification for a CEFR-calibrated French-learning
+            application.</p>
+          <p><strong>2024 — NLP &amp; data collection internship, CERES — Sorbonne Université.</strong>
+            Collection, structuring and analysis of political and textual data; Python scripts for
+            extraction, normalization and corpus analysis; categorization and OCR on documentary corpora.</p>
+          <p><strong>2023 — Team project coordination, Sorbonne Université.</strong> Coordinated a 3-person
+            design-and-implementation project.</p>
+
+          <h4>Selected projects</h4>
+          <ul>
+            <li><strong>Louvre catalogue LLM pipeline</strong> (Master's thesis) — 51,123 records normalized
+              via the Louvre public API; 11 LLMs × 44 configurations vs a hand-annotated gold set;
+              0.961 macro-F1; geocoded interactive map.</li>
+            <li><strong>MES performance audit</strong> — independent read-only recomputation of 5 claimed
+              KPIs from raw MES records for an industrial subsidy dossier.</li>
+            <li><strong>Smart-café operating platform</strong> — real-time CPU-only in-store vision (privacy
+              by design, aggregates only), ops tooling, market intelligence; benchmarked.</li>
+            <li><strong>Robot learning stack (SO-101)</strong> — LeRobot + MuJoCo record→train→eval,
+              voice-driven VLA, cloud-GPU training at zero cost, safety-bounded local execution.</li>
+            <li><strong>Safety-framed AI companion</strong> — multi-voice pipeline with guardian invariant;
+              44–45/45 on a 45-case red-team suite, 0 hard failures.</li>
+            <li><strong>Care-network platform</strong> — SvelteKit/PostGIS beta matching caregivers and
+              helpers; 17 screens, static verification harness.</li>
+            <li><strong>Society simulation engine</strong> — multi-kernel "world machine": typed pressures
+              resolved by least-violation under a feasibility envelope.</li>
+            <li><strong>Electoral counterfactual model</strong> — calibrated on 5 French elections,
+              leave-one-out MAE 4.43 pts, explicit bias audit.</li>
+            <li><strong>Wi-Fi sensing / CSI stack</strong> — presence detection from radio signals on Linux
+              / Intel AX210.</li>
+            <li>Also: multilingual ASR pipeline · dementia detection from speech (DementiaBank Pitt) ·
+              TEI-XML political classification · zero-backend aid search engine · local PDF analysis
+              pipeline · French-learning game design · RC compatibility engine · 200+ km/h RC build with
+              FreeCAD active-aero parts.</li>
+          </ul>
+
+          <h4>Skills</h4>
+          <p><strong>Languages:</strong> Python, TypeScript/JavaScript, R, C++, Java, SQL, LaTeX ·
+            <strong>AI/ML:</strong> supervised classification, evaluation &amp; benchmarking, LLM inference,
+            prompt design, RAG, NER, red-teaming · <strong>NLP/Speech:</strong> corpus analysis, ASR
+            (Whisper), OCR, TEI-XML, scikit-learn · <strong>Backend:</strong> FastAPI, Flask, SvelteKit,
+            Next.js, Node, SQLite, PostgreSQL/PostGIS, Cloudflare Workers &amp; Pages ·
+            <strong>Systems:</strong> Linux, Git, Docker, Makefile, ffmpeg, pytest, MuJoCo/LeRobot, FreeCAD ·
+            <strong>Hardware:</strong> Raspberry Pi, ESP32, Jetson, PC assembly &amp; repair, brushless/RC.</p>
+
+          <h4>Education</h4>
+          <p>2025–2027 — Master's in NLP &amp; AI applications, Sorbonne Université (M1 validated 2026,
+            currently M2) · 2022–2025 — Bachelor's in Language Sciences (CS track), Sorbonne Université ·
+            2022 — Baccalauréat, Lycée Condorcet.</p>
+
+          <h4>Languages</h4>
+          <p>French (native) · English (B2/C1) · Italian (B2)</p>
+        </div>
+      </div>
+      <div class="window__resize" aria-hidden="true"></div>
+    </section>
+
+    <section class="window window--term" id="win-terminal" data-title="terminal" data-icon="i-term" data-w="600" data-h="420" aria-label="Terminal">
+      <header class="window__bar"><svg class="ico"><use href="#i-term"/></svg><h2>adrien@vergne-os: ~</h2>
+        <div class="window__btns"><button class="wbtn wbtn--min" aria-label="Minimize">–</button><button class="wbtn wbtn--max" aria-label="Maximize">□</button><button class="wbtn wbtn--close" aria-label="Close">×</button></div>
+      </header>
+      <div class="window__body term" id="term-body">
+        <div class="term__out" id="term-out"></div>
+        <form class="term__form" id="term-form" autocomplete="off">
+          <label class="term__prompt" for="term-in">adrien@vergne-os:~$</label>
+          <input class="term__in" id="term-in" name="cmd" type="text" spellcheck="false" autocapitalize="off" aria-label="Terminal command" />
+        </form>
+      </div>
+      <div class="window__resize" aria-hidden="true"></div>
     </section>
 
   </main>
 
-  <footer class="footer">
-    <p><span class="star" aria-hidden="true">✳</span> Adrien Vergne, 2026 — set in Fraunces &amp; Newsreader · no trackers, no cookies</p>
-    <a href="#top">Back to top <svg class="ext" width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M5 9V1M1.5 4.5 5 1l3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a>
+  <!-- ============ TASKBAR ============ -->
+  <footer class="taskbar">
+    <button class="taskbar__menu" id="menu-btn" aria-haspopup="true" aria-expanded="false"><span class="star">✳</span> VERGNE-OS</button>
+    <div class="taskbar__tasks" id="taskbar-tasks"></div>
+    <div class="taskbar__clock"><span id="tb-date"></span><strong id="tb-time"></strong></div>
   </footer>
 
-  <script src="assets/app.js"></script>
+  <nav class="startmenu" id="startmenu" aria-label="Applications" hidden>
+    <button data-open="win-readme"><svg class="ico"><use href="#i-note"/></svg> README.md</button>
+    <button data-open="win-about"><svg class="ico"><use href="#i-file"/></svg> about.txt</button>
+    <button data-open="win-projects"><svg class="ico"><use href="#i-folder"/></svg> projects/</button>
+    <button data-open="win-experience"><svg class="ico"><use href="#i-log"/></svg> experience.log</button>
+    <button data-open="win-skills"><svg class="ico"><use href="#i-chip"/></svg> skills.sys</button>
+    <button data-open="win-education"><svg class="ico"><use href="#i-cap"/></svg> education.db</button>
+    <button data-open="win-cv"><svg class="ico"><use href="#i-pdf"/></svg> cv.pdf</button>
+    <button data-open="win-terminal"><svg class="ico"><use href="#i-term"/></svg> terminal</button>
+    <button data-open="win-contact"><svg class="ico"><use href="#i-mail"/></svg> contact.mail</button>
+  </nav>
+
+  <script src="assets/app.js?v=3"></script>
 </body>
 </html>
