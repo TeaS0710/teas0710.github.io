@@ -70,6 +70,7 @@
     removeTask(win);
     var open = windowsOf().filter(function (w) { return w.classList.contains("is-open") && !w.classList.contains("is-min"); });
     if (open.length) focusWindow(open[open.length - 1]);
+    else syncTaskbar();
   }
 
   function minimizeWindow(win) {

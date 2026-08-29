@@ -660,6 +660,7 @@ button { font-family: inherit; color: inherit; }
     inset: 0;
     z-index: 5;
     background: rgba(0, 0, 0, 0.45);
+    pointer-events: none;
   }
   .desktop.has-open .desktop-icons { filter: blur(1px); }
   .window__resize, .wbtn--max { display: none; }
