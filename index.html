@@ -10,25 +10,21 @@
   />
   <meta property="og:title" content="Adrien Vergne — AI &amp; NLP Engineering" />
   <meta property="og:description" content="LLM pipelines, machine learning, applied systems engineering and hardware-linked prototyping." />
-  <meta name="theme-color" content="#0d0f12" />
+  <meta name="theme-color" content="#faf7f2" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..600&family=Archivo:wght@400;500;600&display=swap"
     rel="stylesheet"
   />
   <link rel="stylesheet" href="assets/styles.css" />
 </head>
 <body>
   <div class="scroll-progress" aria-hidden="true"><div class="scroll-progress__bar" id="scroll-progress-bar"></div></div>
-  <div class="grid-backdrop" aria-hidden="true"></div>
 
-  <header class="topbar">
-    <a class="topbar__brand" href="#top">
-      <span class="topbar__mark">AV</span>
-      <span class="topbar__name">Adrien Vergne</span>
-    </a>
-    <nav class="topbar__nav" aria-label="Main navigation" id="main-nav">
+  <header class="masthead">
+    <a class="masthead__brand" href="#top">Adrien Vergne</a>
+    <nav class="masthead__nav" aria-label="Main navigation" id="main-nav">
       <a href="#profile">Profile</a>
       <a href="#experience">Experience</a>
       <a href="#projects">Projects</a>
@@ -36,27 +32,30 @@
       <a href="#education">Education</a>
       <a href="#contact">Contact</a>
     </nav>
-    <button class="button button--ghost topbar__print" id="print-cv" type="button">Print / PDF</button>
+    <button class="masthead__print" id="print-cv" type="button">Print / PDF</button>
   </header>
 
   <main class="page" id="top">
 
     <!-- ============ HERO ============ -->
     <section class="hero">
-      <p class="hero__eyebrow"><span class="tick" aria-hidden="true"></span>Curriculum Vitae — 2026</p>
-      <h1 class="hero__title">Adrien<br />Vergne</h1>
+      <p class="hero__issue"><span class="star" aria-hidden="true">✳</span> Nº 1 — Curriculum Vitae · August 2026 · Paris</p>
+      <h1 class="hero__title">Adrien <em>Vergne</em></h1>
       <p class="hero__role">AI &amp; NLP Engineering — Python · Machine Learning · Applied Systems</p>
-      <p class="hero__summary">
-        I build measured, auditable systems: LLM pipelines benchmarked against hand-annotated gold data,
-        real-time vision that runs on CPU-only hardware, safety-framed conversational AI certified at the
-        bench, and robot-learning stacks from simulation to a physical arm. Currently an M2 student in NLP
-        and AI applications at Sorbonne Université, working freelance engineering missions in parallel.
-      </p>
+
+      <div class="hero__lede">
+        <p>
+          I build measured, auditable systems: LLM pipelines benchmarked against hand-annotated gold data,
+          real-time vision that runs on CPU-only hardware, safety-framed conversational AI certified at the
+          bench, and robot-learning stacks from simulation to a physical arm. Currently an M2 student in NLP
+          and AI applications at Sorbonne Université, working freelance engineering missions in parallel.
+        </p>
+      </div>
 
       <div class="hero__actions">
-        <a class="button button--primary" href="#projects">View projects</a>
-        <a class="button button--ghost" href="https://github.com/TeaS0710" target="_blank" rel="noopener noreferrer">GitHub <svg class="ext" width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 8 8 2M3.5 2H8v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a>
-        <a class="button button--ghost" href="https://www.linkedin.com/in/adrien-vergne-542297161" target="_blank" rel="noopener noreferrer">LinkedIn <svg class="ext" width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 8 8 2M3.5 2H8v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a>
+        <a class="button" href="#projects">View projects</a>
+        <a class="textlink" href="https://github.com/TeaS0710" target="_blank" rel="noopener noreferrer">GitHub <svg class="ext" width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 8 8 2M3.5 2H8v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a>
+        <a class="textlink" href="https://www.linkedin.com/in/adrien-vergne-542297161" target="_blank" rel="noopener noreferrer">LinkedIn <svg class="ext" width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 8 8 2M3.5 2H8v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a>
       </div>
 
       <dl class="hero__meta">
@@ -77,12 +76,11 @@
     <!-- ============ 01 PROFILE ============ -->
     <section class="section reveal" id="profile">
       <header class="section__head">
-        <span class="section__index">01</span>
+        <span class="section__index" aria-hidden="true">01</span>
         <h2>Profile</h2>
-        <span class="section__rule" aria-hidden="true"></span>
       </header>
       <div class="section__body section__body--split">
-        <p>
+        <p class="dropcap">
           Master's student at Sorbonne Université with training in software engineering, machine learning
           and natural language processing, and a working practice built on real deliveries: data pipelines,
           supervised classification, LLM inference and evaluation, ASR and OCR experimentation, API and
@@ -101,9 +99,8 @@
     <!-- ============ 02 EXPERIENCE ============ -->
     <section class="section reveal" id="experience">
       <header class="section__head">
-        <span class="section__index">02</span>
+        <span class="section__index" aria-hidden="true">02</span>
         <h2>Experience</h2>
-        <span class="section__rule" aria-hidden="true"></span>
       </header>
       <div class="section__body entry-stack">
 
@@ -166,9 +163,8 @@
     <!-- ============ 03 PROJECTS ============ -->
     <section class="section reveal" id="projects">
       <header class="section__head">
-        <span class="section__index">03</span>
+        <span class="section__index" aria-hidden="true">03</span>
         <h2>Selected Projects</h2>
-        <span class="section__rule" aria-hidden="true"></span>
       </header>
 
       <div class="filters" role="group" aria-label="Filter projects by domain">
@@ -181,17 +177,19 @@
 
       <div class="project-grid">
 
-        <article class="project" data-cat="ai">
+        <article class="project project--lead" data-cat="ai">
           <div class="project__top"><span class="project__tag">AI &amp; NLP</span><span class="project__num">P-01</span></div>
           <h3>Louvre Catalogue LLM Pipeline</h3>
           <p class="project__context">Master's thesis — Sorbonne Université</p>
-          <p>
-            End-to-end normalization of 51,123 artifact records from the Louvre's public API: retrieval by
-            ARK identifier, LLM-based normalization of heterogeneous fields, geocoding and an interactive
-            map. Eleven models compared across 44 configurations (zero-shot, few-shot, NER pre-processing)
-            against a hand-annotated gold set of 300 records — with retry logic, controlled vocabularies
-            and separate error journaling so no failure passes silently.
-          </p>
+          <div class="project__body">
+            <p>
+              End-to-end normalization of 51,123 artifact records from the Louvre's public API: retrieval by
+              ARK identifier, LLM-based normalization of heterogeneous fields, geocoding and an interactive
+              map. Eleven models compared across 44 configurations (zero-shot, few-shot, NER pre-processing)
+              against a hand-annotated gold set of 300 records — with retry logic, controlled vocabularies
+              and separate error journaling so no failure passes silently.
+            </p>
+          </div>
           <p class="project__metric">0.961 macro-F1 — a 31B model matching 675B mixture-of-experts</p>
           <ul class="project__stack"><li>Python</li><li>Ollama</li><li>LangExtract</li><li>LaTeX</li></ul>
         </article>
@@ -200,13 +198,15 @@
           <div class="project__top"><span class="project__tag">Industrial Data</span><span class="project__num">P-02</span></div>
           <h3>MES Performance Audit Instrument</h3>
           <p class="project__context">Freelance mission — Korean smart-factory program</p>
-          <p>
-            A read-only external auditor that independently recomputes the performance KPIs a Manufacturing
-            Execution System claims, from that system's own raw records — designed to verify whether gains
-            promised in a subsidy dossier are real. Included a critical reading of a 130-page specification,
-            identification of indicators declared "unmeasurable", and the data-granularity questions that
-            decide whether KPIs are computable at all.
-          </p>
+          <div class="project__body">
+            <p>
+              A read-only external auditor that independently recomputes the performance KPIs a Manufacturing
+              Execution System claims, from that system's own raw records — designed to verify whether gains
+              promised in a subsidy dossier are real. Included a critical reading of a 130-page specification,
+              identification of indicators declared "unmeasurable", and the data-granularity questions that
+              decide whether KPIs are computable at all.
+            </p>
+          </div>
           <p class="project__metric">5 KPIs · measurement, not optimization</p>
           <ul class="project__stack"><li>Systems analysis</li><li>KPI verification</li><li>LaTeX / TikZ</li><li>EN / KO</li></ul>
         </article>
@@ -215,13 +215,15 @@
           <div class="project__top"><span class="project__tag">Platform</span><span class="project__num">P-03</span></div>
           <h3>Smart-Café Operating Platform</h3>
           <p class="project__context">Multi-product platform — single account, single hub</p>
-          <p>
-            A unified platform for café operations: in-store vision intelligence that adapts to existing
-            cameras and runs in real time on a CPU-only laptop, never exporting an image (privacy by
-            design); daily operations tooling (checklists, planning, stock, alerts); and a market
-            intelligence product built on public data. Three-plane architecture with contract membranes,
-            measured performance dossiers and reproducible cold-start demos.
-          </p>
+          <div class="project__body">
+            <p>
+              A unified platform for café operations: in-store vision intelligence that adapts to existing
+              cameras and runs in real time on a CPU-only laptop, never exporting an image (privacy by
+              design); daily operations tooling (checklists, planning, stock, alerts); and a market
+              intelligence product built on public data. Three-plane architecture with contract membranes,
+              measured performance dossiers and reproducible cold-start demos.
+            </p>
+          </div>
           <p class="project__metric">Real-time vision on CPU — aggregates only, no image leaves the device</p>
           <ul class="project__stack"><li>Python</li><li>Cloudflare Pages</li><li>Edge / on-prem</li><li>Benchmarked</li></ul>
         </article>
@@ -230,13 +232,15 @@
           <div class="project__top"><span class="project__tag">Robotics</span><span class="project__num">P-04</span></div>
           <h3>Robot Learning Stack — SO-101 Arm</h3>
           <p class="project__context">Sim-first robot learning, then a physical arm</p>
-          <p>
-            Full record → train → eval pipeline with LeRobot and MuJoCo, run without a local GPU: recording
-            and evaluation on CPU, training on free cloud GPUs via code-first script kernels, checkpoints on
-            the Hugging Face Hub. Culminates in a voice-driven vision-language-action model and a cockpit
-            app where a cloud VLM does the spatial reasoning while execution stays local, bounded by inverse
-            kinematics and safety guards.
-          </p>
+          <div class="project__body">
+            <p>
+              Full record → train → eval pipeline with LeRobot and MuJoCo, run without a local GPU: recording
+              and evaluation on CPU, training on free cloud GPUs via code-first script kernels, checkpoints on
+              the Hugging Face Hub. Culminates in a voice-driven vision-language-action model and a cockpit
+              app where a cloud VLM does the spatial reasoning while execution stays local, bounded by inverse
+              kinematics and safety guards.
+            </p>
+          </div>
           <p class="project__metric">Sim → real transfer with 0 € of paid compute</p>
           <ul class="project__stack"><li>LeRobot</li><li>MuJoCo</li><li>SmolVLA</li><li>Whisper</li></ul>
         </article>
@@ -245,13 +249,15 @@
           <div class="project__top"><span class="project__tag">AI Safety</span><span class="project__num">P-05</span></div>
           <h3>Safety-Framed AI Companion</h3>
           <p class="project__context">Conversational AI for a vulnerable user — safety as the core spec</p>
-          <p>
-            A multi-voice LLM pipeline (twelve specialist voices → architect → a final guardian pass) that
-            speaks its user's poetic universe without ever validating a harmful drift. The guardian is the
-            invariant: red-teamed against manipulation prompts, injected delusional corpora and escalating
-            model power, with the vital cases re-read by hand and tested for variance. Includes bounded
-            memory, RAG over personal documents, PBKDF2 auth and PWA packaging.
-          </p>
+          <div class="project__body">
+            <p>
+              A multi-voice LLM pipeline (twelve specialist voices → architect → a final guardian pass) that
+              speaks its user's poetic universe without ever validating a harmful drift. The guardian is the
+              invariant: red-teamed against manipulation prompts, injected delusional corpora and escalating
+              model power, with the vital cases re-read by hand and tested for variance. Includes bounded
+              memory, RAG over personal documents, PBKDF2 auth and PWA packaging.
+            </p>
+          </div>
           <p class="project__metric">44–45 / 45 on the full red-team suite — 0 hard failures</p>
           <ul class="project__stack"><li>TypeScript</li><li>Cloudflare Workers</li><li>Ollama</li><li>RAG</li></ul>
         </article>
@@ -260,13 +266,15 @@
           <div class="project__top"><span class="project__tag">Platform</span><span class="project__num">P-06</span></div>
           <h3>Care-Network Platform</h3>
           <p class="project__context">Freelance mission — social-sector startup beta</p>
-          <p>
-            A platform matching elderly, often isolated caregivers with younger helpers who visit regularly
-            — the design bet being that help becomes acceptable when it flows through transmission rather
-            than assistance. Four user surfaces, geographic matching, a demonstration review site, and an
-            engineering culture of guard-rails: static verification rules, HTTP leak checks and documented
-            production pitfalls.
-          </p>
+          <div class="project__body">
+            <p>
+              A platform matching elderly, often isolated caregivers with younger helpers who visit regularly
+              — the design bet being that help becomes acceptable when it flows through transmission rather
+              than assistance. Four user surfaces, geographic matching, a demonstration review site, and an
+              engineering culture of guard-rails: static verification rules, HTTP leak checks and documented
+              production pitfalls.
+            </p>
+          </div>
           <p class="project__metric">17-screen build with a static verification harness</p>
           <ul class="project__stack"><li>SvelteKit</li><li>PostgreSQL</li><li>PostGIS</li><li>Node</li></ul>
         </article>
@@ -275,12 +283,14 @@
           <div class="project__top"><span class="project__tag">Simulation</span><span class="project__num">P-07</span></div>
           <h3>Society Simulation Engine</h3>
           <p class="project__context">Research prototype — a "world machine"</p>
-          <p>
-            A simulation engine for an entire society — social, economic, political, ideological, cognitive
-            — that evolves on its own. Neither pure determinism (which drifts) nor pure LLM (which
-            hallucinates): every kernel, including the LLM, emits only typed pressures, resolved by
-            least-violation under a hard feasibility envelope, so plausibility is coerced by structure.
-          </p>
+          <div class="project__body">
+            <p>
+              A simulation engine for an entire society — social, economic, political, ideological, cognitive
+              — that evolves on its own. Neither pure determinism (which drifts) nor pure LLM (which
+              hallucinates): every kernel, including the LLM, emits only typed pressures, resolved by
+              least-violation under a hard feasibility envelope, so plausibility is coerced by structure.
+            </p>
+          </div>
           <p class="project__metric">Multi-kernel · typed pressures · feasibility envelope</p>
           <ul class="project__stack"><li>Python</li><li>Multi-agent</li><li>LLM-in-the-loop</li></ul>
         </article>
@@ -289,12 +299,14 @@
           <div class="project__top"><span class="project__tag">Modeling</span><span class="project__num">P-08</span></div>
           <h3>Electoral Counterfactual Model</h3>
           <p class="project__context">Exploratory exercise — explicitly not a prediction tool</p>
-          <p>
-            A counterfactual simulation of a hypothetical 2027 presidential candidacy, calibrated on the
-            five previous French elections with leave-one-out validation, Latin-hypercube sensitivity
-            analysis and CMA-ES optimization. Includes an explicit audit of the model's own optimistic
-            biases — the corrected version honestly reports structural quasi-impossibility.
-          </p>
+          <div class="project__body">
+            <p>
+              A counterfactual simulation of a hypothetical 2027 presidential candidacy, calibrated on the
+              five previous French elections with leave-one-out validation, Latin-hypercube sensitivity
+              analysis and CMA-ES optimization. Includes an explicit audit of the model's own optimistic
+              biases — the corrected version honestly reports structural quasi-impossibility.
+            </p>
+          </div>
           <p class="project__metric">Leave-one-out MAE 4.43 pts — bias audit included</p>
           <ul class="project__stack"><li>Python</li><li>CMA-ES</li><li>LHS</li><li>Calibration</li></ul>
         </article>
@@ -303,12 +315,14 @@
           <div class="project__top"><span class="project__tag">Hardware</span><span class="project__num">P-09</span></div>
           <h3>Wi-Fi Sensing / CSI Stack</h3>
           <p class="project__context">Software-defined sensing on commodity hardware</p>
-          <p>
-            A Linux stack for Wi-Fi channel-state-information sensing on an Intel AX210: capture ingestion,
-            normalization into datasets, windowing, machine-learning baselines for presence and coarse
-            activity detection, and terminal/web dashboards — working at the interface of software, drivers
-            and radio hardware.
-          </p>
+          <div class="project__body">
+            <p>
+              A Linux stack for Wi-Fi channel-state-information sensing on an Intel AX210: capture ingestion,
+              normalization into datasets, windowing, machine-learning baselines for presence and coarse
+              activity detection, and terminal/web dashboards — working at the interface of software, drivers
+              and radio hardware.
+            </p>
+          </div>
           <p class="project__metric">Presence detection from radio signals alone</p>
           <ul class="project__stack"><li>Python</li><li>Linux</li><li>Signal processing</li><li>scikit-learn</li></ul>
         </article>
@@ -316,7 +330,7 @@
       </div>
 
       <div class="more-work">
-        <h3 class="more-work__title">Further work</h3>
+        <h3 class="more-work__title">Also in this issue</h3>
         <ul class="more-work__list">
           <li><strong>Multilingual ASR pipeline</strong> — audio preparation, Whisper transcription, model comparison and structured reporting on heterogeneous oral corpora.</li>
           <li><strong>Dementia detection from speech</strong> — binary classification on the DementiaBank Pitt corpus ("cookie theft" task).</li>
@@ -333,11 +347,10 @@
     <!-- ============ 04 SKILLS ============ -->
     <section class="section reveal" id="skills">
       <header class="section__head">
-        <span class="section__index">04</span>
+        <span class="section__index" aria-hidden="true">04</span>
         <h2>Skills</h2>
-        <span class="section__rule" aria-hidden="true"></span>
       </header>
-      <div class="section__body spec-grid">
+      <div class="section__body spec-list">
         <div class="spec">
           <h3 class="spec__label">Languages</h3>
           <p>Python · TypeScript / JavaScript · R · C++ · Java · SQL · LaTeX</p>
@@ -372,9 +385,8 @@
     <!-- ============ 05 EDUCATION ============ -->
     <section class="section reveal" id="education">
       <header class="section__head">
-        <span class="section__index">05</span>
+        <span class="section__index" aria-hidden="true">05</span>
         <h2>Education</h2>
-        <span class="section__rule" aria-hidden="true"></span>
       </header>
       <div class="section__body timeline">
         <article class="timeline__item">
@@ -404,9 +416,8 @@
     <!-- ============ 06 LANGUAGES & INTERESTS ============ -->
     <section class="section reveal" id="languages">
       <header class="section__head">
-        <span class="section__index">06</span>
+        <span class="section__index" aria-hidden="true">06</span>
         <h2>Languages &amp; Interests</h2>
-        <span class="section__rule" aria-hidden="true"></span>
       </header>
       <div class="section__body section__body--split">
         <div>
@@ -428,12 +439,11 @@
     <!-- ============ 07 CONTACT ============ -->
     <section class="section reveal" id="contact">
       <header class="section__head">
-        <span class="section__index">07</span>
+        <span class="section__index" aria-hidden="true">07</span>
         <h2>Contact</h2>
-        <span class="section__rule" aria-hidden="true"></span>
       </header>
       <div class="section__body contact">
-        <p class="contact__lead">Open to M2 internships, freelance missions and technical collaborations.</p>
+        <p class="contact__lead">Open to M2 internships, freelance missions and technical collaborations. Write to me —</p>
         <a class="contact__mail" href="mailto:vergneadrien65@gmail.com">vergneadrien65@gmail.com</a>
         <ul class="contact__links">
           <li><a href="tel:+33786985160">+33 7 86 98 51 60</a></li>
@@ -447,7 +457,7 @@
   </main>
 
   <footer class="footer">
-    <p>Adrien Vergne — engineered as a static web CV. No trackers, no cookies.</p>
+    <p><span class="star" aria-hidden="true">✳</span> Adrien Vergne, 2026 — set in Fraunces &amp; Newsreader · no trackers, no cookies</p>
     <a href="#top">Back to top <svg class="ext" width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M5 9V1M1.5 4.5 5 1l3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a>
   </footer>
 
