@@ -170,7 +170,12 @@
     var b = $('[data-task="' + win.id + '"]', tasksEl);
     if (b) b.remove();
   }
+  function syncDesktopState() {
+    var anyVisible = windowsOf().some(function (w) { return w.classList.contains("is-open") && !w.classList.contains("is-min"); });
+    desktop.classList.toggle("has-open", anyVisible);
+  }
   function syncTaskbar() {
+    syncDesktopState();
     $$(".tbtask", tasksEl).forEach(function (b) {
       var win = document.getElementById(b.getAttribute("data-task"));
       b.classList.toggle("is-active", win.classList.contains("is-active") && !win.classList.contains("is-min"));
@@ -203,6 +208,21 @@
       menu.hidden = true;
       menuBtn.setAttribute("aria-expanded", "false");
     }
+  });
+
+  /* show desktop (home button): minimize every open window */
+  $("#home-btn").addEventListener("click", function () {
+    windowsOf().forEach(function (w) {
+      if (w.classList.contains("is-open") && !w.classList.contains("is-min")) minimizeWindow(w);
+    });
+  });
+
+  /* mobile: tapping the visible desktop strip minimizes the active window */
+  desktop.addEventListener("click", function (e) {
+    if (!isMobile()) return;
+    if (e.target.closest(".window") || e.target.closest(".dicon")) return;
+    var active = $(".window.is-active.is-open:not(.is-min)");
+    if (active) minimizeWindow(active);
   });
 
   /* every [data-open] opens a window */
@@ -534,7 +554,7 @@
     boot.classList.add("is-done");
     try { sessionStorage.setItem("vos_booted", "1"); } catch (err) {}
     setTimeout(function () { boot.remove(); }, 450);
-    openWindow("win-readme");
+    if (!isMobile()) openWindow("win-readme");
   }
 
   var skipBoot = reducedMotion;

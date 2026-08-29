@@ -10,6 +10,15 @@
   />
   <meta property="og:title" content="Adrien Vergne — AI &amp; NLP Engineering" />
   <meta property="og:description" content="A CV shipped as a tiny operating system: draggable windows, a working terminal, and real, measured projects." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://vergne.pages.dev/" />
+  <meta property="og:image" content="https://vergne.pages.dev/assets/og.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Adrien Vergne — AI &amp; NLP Engineering" />
+  <meta name="twitter:description" content="A CV shipped as a tiny operating system: draggable windows, a working terminal, and real, measured projects." />
+  <meta name="twitter:image" content="https://vergne.pages.dev/assets/og.png" />
   <meta name="theme-color" content="#1b1e20" />
   <link rel="canonical" href="https://vergne.pages.dev/" />
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='8.2' fill='none' stroke='%231d99f3' stroke-width='3.6' stroke-dasharray='2.6 2.35'/%3E%3Cpath d='m8.6 8.8 3.4 6.8 3.4-6.8' fill='none' stroke='%231d99f3' stroke-width='2'/%3E%3C/svg%3E" />
@@ -19,7 +28,7 @@
     href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400&family=Ubuntu+Mono:wght@400;700&display=swap"
     rel="stylesheet"
   />
-  <link rel="stylesheet" href="assets/styles.css?v=4" />
+  <link rel="stylesheet" href="assets/styles.css?v=5" />
 </head>
 <body>
   <noscript>
@@ -33,6 +42,7 @@
   <!-- inline icon set -->
   <svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
     <symbol id="i-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.2" fill="none" stroke="currentColor" stroke-width="3.4" stroke-dasharray="2.6 2.35"/><circle cx="12" cy="12" r="6.2" fill="none" stroke="currentColor" stroke-width="1.2"/><path d="m8.7 8.9 3.3 6.6 3.3-6.6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round" stroke-linecap="round"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="m3.5 11 8.5-7 8.5 7M6 9.5V20h12V9.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/></symbol>
     <symbol id="i-note" viewBox="0 0 24 24"><path d="M5 3h11l3 3v15H5z" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M16 3v3h3M8.5 10h7M8.5 13.5h7M8.5 17h4.5" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
     <symbol id="i-file" viewBox="0 0 24 24"><path d="M5 3h11l3 3v15H5z" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M16 3v3h3" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
     <symbol id="i-folder" viewBox="0 0 24 24"><path d="M3 6h6l2 2.5h10V20H3z" fill="none" stroke="currentColor" stroke-width="1.5"/></symbol>
@@ -539,6 +549,7 @@
   <!-- ============ TASKBAR ============ -->
   <footer class="taskbar">
     <button class="taskbar__menu" id="menu-btn" aria-haspopup="true" aria-expanded="false"><svg class="ico ico--accent"><use href="#i-gear"/></svg> VERGNE-OS</button>
+    <button class="taskbar__home" id="home-btn" type="button" aria-label="Show desktop" title="Show desktop"><svg class="ico"><use href="#i-home"/></svg></button>
     <div class="taskbar__tasks" id="taskbar-tasks"></div>
     <div class="taskbar__clock"><span id="tb-date"></span><strong id="tb-time"></strong></div>
   </footer>
@@ -555,6 +566,6 @@
     <button data-open="win-contact"><svg class="ico"><use href="#i-mail"/></svg> contact.mail</button>
   </nav>
 
-  <script src="assets/app.js?v=4"></script>
+  <script src="assets/app.js?v=5"></script>
 </body>
 </html>
