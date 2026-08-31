@@ -340,7 +340,7 @@
     '<span class="t-ac">     ██     </span>  Shell:    vanilla-js (view source, it\'s all there)',
     '              Model:    gemma4:31b (daily driver)',
     '              Uptime:   coding since 2022',
-    '              Packages: 15+ projects (9 featured)',
+    '              Packages: 15+ projects (10 featured)',
     '              Gold:     F1 macro 0.961 · 51,123 records',
     '              Contact:  vergneadrien65@gmail.com'
   ].join("\n");
@@ -394,7 +394,7 @@
       return [
         '<span class="t-cmd">Available commands</span>',
         '  about        who is Adrien',
-        '  projects     list the projects        <span class="t-dim">open p01 … p09 to read one</span>',
+        '  projects     list the projects        <span class="t-dim">open p01 … p10 to read one</span>',
         '  experience   work experience',
         '  skills       technical skills',
         '  education    studies',
@@ -422,7 +422,8 @@
         "p07  world-machine          <span class='t-dim'>society simulation engine</span>",
         "p08  electoral-model        <span class='t-dim'>LOO MAE 4.43 pts</span>",
         "p09  wifi-csi               <span class='t-dim'>presence from radio signals</span>",
-        "<span class='t-dim'>type</span> open p01 <span class='t-dim'>(… p09) to read one</span>"
+        "p10  airc-telemetry         <span class='t-dim'>4 kHz IMU → LoRa → ESKF, fuzzed C99 core</span>",
+        "<span class='t-dim'>type</span> open p01 <span class='t-dim'>(… p10) to read one</span>"
       ].join("\n");
     },
     experience: function () { openWindow("win-experience"); return "opening experience.log …"; },
@@ -459,10 +460,10 @@
       openWindow("win-contact");
       return;
     }
-    if (/^open\s+p-?0?([1-9])$/.test(lower)) {
-      var n = lower.match(/([1-9])$/)[1];
-      tprint("opening p0" + n + " …");
-      openWindow("win-p0" + n);
+    if (/^open\s+p-?(0?[1-9]|10)$/.test(lower)) {
+      var n = ("0" + parseInt(lower.match(/(\d+)$/)[1], 10)).slice(-2);
+      tprint("opening p" + n + " …");
+      openWindow("win-p" + n);
       return;
     }
     if (lower === "train" || /^python\s+train\.py/.test(lower)) { cmdTrain(); return; }

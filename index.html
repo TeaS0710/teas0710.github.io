@@ -28,7 +28,7 @@
     href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400&family=Ubuntu+Mono:wght@400;700&display=swap"
     rel="stylesheet"
   />
-  <link rel="stylesheet" href="assets/styles.css?v=8" />
+  <link rel="stylesheet" href="assets/styles.css?v=9" />
 </head>
 <body>
   <noscript>
@@ -149,9 +149,10 @@
             <button class="fitem" data-cat="sim ai" data-open="win-p07"><svg class="ico"><use href="#i-file"/></svg><span class="fitem__name">p07_world-machine.proj</span><span class="fitem__desc">Society simulation engine</span></button>
             <button class="fitem" data-cat="sim" data-open="win-p08"><svg class="ico"><use href="#i-file"/></svg><span class="fitem__name">p08_electoral.proj</span><span class="fitem__desc">Electoral counterfactual model</span></button>
             <button class="fitem" data-cat="hardware" data-open="win-p09"><svg class="ico"><use href="#i-file"/></svg><span class="fitem__name">p09_wifi-csi.proj</span><span class="fitem__desc">Wi-Fi sensing / CSI stack</span></button>
+            <button class="fitem" data-cat="hardware systems" data-open="win-p10"><svg class="ico"><use href="#i-file"/></svg><span class="fitem__name">p10_rc-telemetry.proj</span><span class="fitem__desc">RC telemetry stack</span></button>
             <button class="fitem fitem--misc" data-cat="all-misc" data-open="win-morework"><svg class="ico"><use href="#i-folder"/></svg><span class="fitem__name">misc/</span><span class="fitem__desc">8 more projects</span></button>
           </div>
-          <p class="fm-status"><span id="fm-count">10</span> items · click a file to open it</p>
+          <p class="fm-status"><span id="fm-count">11</span> items · click a file to open it</p>
         </div>
       </div>
       <div class="window__resize" aria-hidden="true"></div>
@@ -327,6 +328,27 @@
       <div class="window__resize" aria-hidden="true"></div>
     </section>
 
+    <section class="window window--proj" id="win-p10" data-title="p10_rc-telemetry.proj" data-icon="i-file" data-w="560" data-h="500" aria-label="Project: RC telemetry stack">
+      <header class="window__bar"><svg class="ico"><use href="#i-file"/></svg><h2>p10_rc-telemetry.proj</h2>
+        <div class="window__btns"><button class="wbtn wbtn--min" aria-label="Minimize">–</button><button class="wbtn wbtn--max" aria-label="Maximize">□</button><button class="wbtn wbtn--close" aria-label="Close">×</button></div>
+      </header>
+      <div class="window__body prose">
+        <p class="ptag">Embedded · P-10</p>
+        <h3>RC Telemetry and Pilot-Assistance Stack</h3>
+        <p class="pctx">Two ESP32-S3 boards, a LoRa link, and a laptop that does the thinking</p>
+        <p>Onboard logging and live telemetry for a 350 km/h speedrun RC car and a touring car. The vehicle
+          board samples a 4 kHz IMU and a 10 Hz GNSS, keeps a PSRAM ring buffer and talks LoRa; a ground
+          station bridges the link to USB; the laptop runs the Python chain (ESKF fusion, aerodynamic
+          identification, EICAS-style alert rules, live dashboard, run report). One C99 protocol core is
+          compiled on both boards, loaded by Python through cffi and fuzzed on desktop, so no decoder is
+          ever written by hand. Read-only by design: it never touches throttle or steering.</p>
+        <p class="pmetric">▸ 12-log fault corpus replayed on every change: 2,906 indicators, 0 divergence</p>
+        <p class="pstack">C99 · C++ / FreeRTOS · ESP32-S3 · LoRa (SX1262) · Python · PlatformIO</p>
+        <p><a href="https://github.com/TeaS0710/airc-telemetry" target="_blank" rel="noopener noreferrer">source on GitHub <svg class="ext" width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 8 8 2M3.5 2H8v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a></p>
+      </div>
+      <div class="window__resize" aria-hidden="true"></div>
+    </section>
+
     <section class="window" id="win-morework" data-title="~/projects/misc" data-icon="i-folder" data-w="620" data-h="480" aria-label="More projects">
       <header class="window__bar"><svg class="ico"><use href="#i-folder"/></svg><h2>~/projects/misc</h2>
         <div class="window__btns"><button class="wbtn wbtn--min" aria-label="Minimize">–</button><button class="wbtn wbtn--max" aria-label="Maximize">□</button><button class="wbtn wbtn--close" aria-label="Close">×</button></div>
@@ -396,13 +418,13 @@
       </header>
       <div class="window__body prose">
         <dl class="kv kv--rows">
-          <div><dt>Languages</dt><dd>Python · TypeScript / JavaScript · R · C++ · Java · SQL · LaTeX</dd></div>
+          <div><dt>Languages</dt><dd>Python · C / C++ · TypeScript / JavaScript · R · Java · SQL · LaTeX</dd></div>
           <div><dt>AI / ML</dt><dd>Supervised classification · feature engineering · model evaluation &amp; benchmarking · LLM inference (Ollama, cloud APIs) · prompt design · RAG &amp; embeddings · NER · red-teaming / safety evaluation</dd></div>
           <div><dt>NLP / Speech</dt><dd>Corpus analysis · text normalization · ASR (Whisper) · OCR · TEI-XML · lexicometry · scikit-learn</dd></div>
           <div><dt>Backend</dt><dd>FastAPI · Flask · SvelteKit · Next.js · Node · SQLite · PostgreSQL / PostGIS · Cloudflare Workers &amp; Pages</dd></div>
-          <div><dt>Methods</dt><dd>Reproducible pipelines · gold-data evaluation · statistical validation · benchmarking under identical conditions · technical documentation · bilingual deliverables</dd></div>
+          <div><dt>Methods</dt><dd>Reproducible pipelines · gold-data evaluation · statistical validation · benchmarking under identical conditions · fuzzing under ASan/UBSan · non-regression corpora · technical documentation · bilingual deliverables</dd></div>
           <div><dt>Systems</dt><dd>Linux · Git · Docker · Makefile workflows · ffmpeg · pytest · MuJoCo / LeRobot · FreeCAD</dd></div>
-          <div><dt>Hardware</dt><dd>Raspberry Pi · ESP32 · Jetson (Nano, Orin) · PC assembly &amp; repair · brushless / RC systems · hardware integration &amp; maintenance</dd></div>
+          <div><dt>Hardware</dt><dd>Raspberry Pi · ESP32 / ESP32-S3 (FreeRTOS, PlatformIO) · LoRa · IMU / GNSS integration · Jetson (Nano, Orin) · PC assembly &amp; repair · brushless / RC systems · hardware integration &amp; maintenance</dd></div>
         </dl>
       </div>
       <div class="window__resize" aria-hidden="true"></div>
@@ -505,6 +527,9 @@
               leave-one-out MAE 4.43 pts, explicit bias audit.</li>
             <li><strong>Wi-Fi sensing / CSI stack</strong>: presence detection from radio signals on Linux
               / Intel AX210.</li>
+            <li><strong>RC telemetry stack</strong>: ESP32-S3 firmware (4 kHz IMU, GNSS, LoRa) + ground
+              station + Python ESKF/physics/alert chain; one fuzzed C99 protocol core shared by boards and
+              PC; 12-log fault corpus, 0 divergence.</li>
             <li>Also: multilingual ASR pipeline · dementia detection from speech (DementiaBank Pitt) ·
               TEI-XML political classification · zero-backend aid search engine · local PDF analysis
               pipeline · French-learning game design · RC compatibility engine · 200+ km/h RC build with
@@ -568,6 +593,6 @@
     <button data-open="win-contact"><svg class="ico"><use href="#i-mail"/></svg> contact.mail</button>
   </nav>
 
-  <script src="assets/app.js?v=8"></script>
+  <script src="assets/app.js?v=9"></script>
 </body>
 </html>
