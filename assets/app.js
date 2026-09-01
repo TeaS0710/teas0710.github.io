@@ -340,7 +340,7 @@
     '<span class="t-ac">     ██     </span>  Shell:    vanilla-js (view source, it\'s all there)',
     '              Model:    gemma4:31b (daily driver)',
     '              Uptime:   coding since 2022',
-    '              Packages: 15+ projects (10 featured)',
+    '              Packages: 15+ projects (9 featured)',
     '              Gold:     F1 macro 0.961 · 51,123 records',
     '              Contact:  vergneadrien65@gmail.com'
   ].join("\n");
@@ -382,7 +382,7 @@
     tbar(function (p) { return ollamaLine("8f2a1c9e", "1 human", p); }, 450, function () {
       tprint('<span class="t-dim">&gt;&gt;&gt; loaded adrien:m2, streaming…</span>');
       tstream("Hi. I normalize museum catalogues with LLMs, benchmark 11 models against hand-made gold data, " +
-        "teach a robot arm in MuJoCo, audit factory KPIs, and tune RC cars past 200 km/h. " +
+        "teach a robot arm in MuJoCo, log an RC car at 4 kHz, and tune it past 200 km/h. " +
         "Weights are not for sale, but inference is: vergneadrien65@gmail.com", function () {
         termBusy = false;
       });
@@ -394,7 +394,7 @@
       return [
         '<span class="t-cmd">Available commands</span>',
         '  about        who is Adrien',
-        '  projects     list the projects        <span class="t-dim">open p01 … p10 to read one</span>',
+        '  projects     list the projects        <span class="t-dim">open p01 … p09 to read one</span>',
         '  experience   work experience',
         '  skills       technical skills',
         '  education    studies',
@@ -414,16 +414,15 @@
       openWindow("win-projects");
       return [
         "p01  louvre-llm-pipeline    <span class='t-dim'>0.961 macro-F1 on 51,123 records</span>",
-        "p02  mes-audit              <span class='t-dim'>read-only KPI verification</span>",
-        "p03  smart-cafe-platform    <span class='t-dim'>CPU-only real-time vision</span>",
-        "p04  so101-robot-arm        <span class='t-dim'>sim→real, voice-driven VLA</span>",
-        "p05  safe-companion         <span class='t-dim'>44–45/45 red-team, 0 hard failures</span>",
-        "p06  care-network           <span class='t-dim'>SvelteKit · PostGIS beta</span>",
-        "p07  world-machine          <span class='t-dim'>society simulation engine</span>",
-        "p08  electoral-model        <span class='t-dim'>LOO MAE 4.43 pts</span>",
-        "p09  wifi-csi               <span class='t-dim'>presence from radio signals</span>",
-        "p10  airc-telemetry         <span class='t-dim'>4 kHz IMU → LoRa → ESKF, fuzzed C99 core</span>",
-        "<span class='t-dim'>type</span> open p01 <span class='t-dim'>(… p10) to read one</span>"
+        "p02  smart-cafe-platform    <span class='t-dim'>CPU-only real-time vision</span>",
+        "p03  so101-robot-arm        <span class='t-dim'>sim→real, voice-driven VLA</span>",
+        "p04  safe-companion         <span class='t-dim'>44–45/45 red-team, 0 hard failures</span>",
+        "p05  care-network           <span class='t-dim'>SvelteKit · PostGIS beta</span>",
+        "p06  world-machine          <span class='t-dim'>society simulation engine</span>",
+        "p07  electoral-model        <span class='t-dim'>LOO MAE 4.43 pts</span>",
+        "p08  wifi-csi               <span class='t-dim'>presence from radio signals</span>",
+        "p09  airc-telemetry         <span class='t-dim'>4 kHz IMU → LoRa → ESKF, fuzzed C99 core</span>",
+        "<span class='t-dim'>type</span> open p01 <span class='t-dim'>(… p09) to read one</span>"
       ].join("\n");
     },
     experience: function () { openWindow("win-experience"); return "opening experience.log …"; },
@@ -460,7 +459,7 @@
       openWindow("win-contact");
       return;
     }
-    if (/^open\s+p-?(0?[1-9]|10)$/.test(lower)) {
+    if (/^open\s+p-?(0?[1-9])$/.test(lower)) {
       var n = ("0" + parseInt(lower.match(/(\d+)$/)[1], 10)).slice(-2);
       tprint("opening p" + n + " …");
       openWindow("win-p" + n);
