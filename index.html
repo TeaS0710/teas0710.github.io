@@ -6,7 +6,7 @@
   <title>Adrien Vergne · AI &amp; NLP Engineering</title>
   <meta
     name="description"
-    content="Adrien Vergne, AI &amp; NLP engineering: Python, machine learning, LLM pipelines, applied systems and hardware-linked prototyping. M2 student at Sorbonne Université, freelance missions. Presented as VERGNE-OS, a playable desktop."
+    content="Adrien Vergne, AI &amp; NLP engineering: Python, machine learning, LLM pipelines, applied systems and hardware-linked prototyping. M2 student at Sorbonne Université, client missions. Presented as VERGNE-OS, a playable desktop."
   />
   <meta property="og:title" content="Adrien Vergne · AI &amp; NLP Engineering" />
   <meta property="og:description" content="A CV shipped as a tiny operating system: draggable windows, a working terminal, and real, measured projects." />
@@ -28,7 +28,7 @@
     href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,400;0,500;0,700;1,400&family=Ubuntu+Mono:wght@400;700&display=swap"
     rel="stylesheet"
   />
-  <link rel="stylesheet" href="assets/styles.css?v=10" />
+  <link rel="stylesheet" href="assets/styles.css?v=11" />
 </head>
 <body>
   <noscript>
@@ -85,7 +85,7 @@
       <div class="window__body prose">
         <h3><svg class="ico ico--accent"><use href="#i-gear"/></svg> Welcome to VERGNE-OS</h3>
         <p class="lead">The CV of <strong>Adrien Vergne</strong>. M2 in NLP &amp; AI at Sorbonne Université,
-        freelance engineering on the side. Python, machine learning, LLM pipelines, systems, hardware.</p>
+        client missions on the side. Python, machine learning, LLM pipelines, systems, hardware.</p>
         <p>This is not a template: the whole OS (window manager, terminal, boot sequence) is one
         hand-written vanilla JS file. View source, it all fits in there.</p>
         <p>No AI assistant lives here anymore. The previous one (YIYI) was decommissioned in August 2026,
@@ -149,7 +149,7 @@
             <button class="fitem" data-cat="sim" data-open="win-p07"><svg class="ico"><use href="#i-file"/></svg><span class="fitem__name">p07_electoral.proj</span><span class="fitem__desc">Electoral counterfactual model</span></button>
             <button class="fitem" data-cat="hardware" data-open="win-p08"><svg class="ico"><use href="#i-file"/></svg><span class="fitem__name">p08_wifi-csi.proj</span><span class="fitem__desc">Wi-Fi sensing / CSI stack</span></button>
             <button class="fitem" data-cat="hardware systems" data-open="win-p09"><svg class="ico"><use href="#i-file"/></svg><span class="fitem__name">p09_rc-telemetry.proj</span><span class="fitem__desc">RC telemetry stack</span></button>
-            <button class="fitem fitem--misc" data-cat="all-misc" data-open="win-morework"><svg class="ico"><use href="#i-folder"/></svg><span class="fitem__name">misc/</span><span class="fitem__desc">8 more projects</span></button>
+            <button class="fitem fitem--misc" data-cat="all-misc" data-open="win-morework"><svg class="ico"><use href="#i-folder"/></svg><span class="fitem__name">misc/</span><span class="fitem__desc">9 more projects</span></button>
           </div>
           <p class="fm-status"><span id="fm-count">10</span> items · click a file to open it</p>
         </div>
@@ -165,13 +165,13 @@
       <div class="window__body prose">
         <p class="ptag">AI &amp; NLP · P-01</p>
         <h3>Louvre Catalogue LLM Pipeline</h3>
-        <p class="pctx">Master's thesis · Sorbonne Université</p>
+        <p class="pctx">M1 research project, with Michel Chan · Sorbonne Université</p>
         <p>End-to-end normalization of 51,123 artifact records from the Louvre's public API: retrieval by
           ARK identifier, LLM-based normalization of heterogeneous fields, geocoding and an interactive
           map. Eleven models compared across 44 configurations (zero-shot, few-shot, NER pre-processing)
           against a hand-annotated gold set of 300 records, with retry logic, controlled vocabularies
           and separate error journaling so no failure passes silently.</p>
-        <p class="pmetric">▸ 0.961 macro-F1: a 31B model matching 675B mixture-of-experts</p>
+        <p class="pmetric">▸ 0.961 macro-F1: a 31B dense model tying the best MoE (DeepSeek V3.2, 671B)</p>
         <p class="pstack">Python · Ollama · LangExtract · LaTeX</p>
         <p><a href="https://github.com/TeaS0710/louvre-llm-pipeline" target="_blank" rel="noopener noreferrer">source on GitHub <svg class="ext" width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 8 8 2M3.5 2H8v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a></p>
       </div>
@@ -243,7 +243,7 @@
       <div class="window__body prose">
         <p class="ptag">Platform · P-05</p>
         <h3>Care-Network Platform</h3>
-        <p class="pctx">Freelance mission · social-sector startup beta</p>
+        <p class="pctx">Client mission · social-sector startup beta</p>
         <p>A platform matching elderly, often isolated caregivers with younger helpers who visit regularly.
           The bet: help becomes acceptable when it flows through transmission rather than assistance. Four user surfaces, geographic matching, a demonstration review site, and guard-rails
           everywhere: static verification rules, HTTP leak checks, documented production pitfalls.</p>
@@ -304,6 +304,7 @@
           and radio hardware.</p>
         <p class="pmetric">▸ Presence detection from radio signals alone</p>
         <p class="pstack">Python · Linux · Signal processing · scikit-learn</p>
+        <p><a href="https://github.com/TeaS0710/Wifi_Sensing" target="_blank" rel="noopener noreferrer">source on GitHub <svg class="ext" width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 8 8 2M3.5 2H8v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a></p>
       </div>
       <div class="window__resize" aria-hidden="true"></div>
     </section>
@@ -316,13 +317,13 @@
         <p class="ptag">Embedded · P-09</p>
         <h3>RC Telemetry and Pilot-Assistance Stack</h3>
         <p class="pctx">Two ESP32-S3 boards, a LoRa link, and a laptop that does the thinking</p>
-        <p>Onboard logging and live telemetry for a 350 km/h speedrun RC car and a touring car. The vehicle
-          board samples a 4 kHz IMU and a 10 Hz GNSS, keeps a PSRAM ring buffer and talks LoRa; a ground
+        <p>Onboard logging and live telemetry for a speedrun RC car designed for 350 km/h and a touring car. The vehicle
+          board samples a 7.2 kHz IMU and a 10 Hz GNSS, keeps a PSRAM ring buffer and talks LoRa; a ground
           station bridges the link to USB; the laptop runs the Python chain (ESKF fusion, aerodynamic
           identification, EICAS-style alert rules, live dashboard, run report). One C99 protocol core is
           compiled on both boards, loaded by Python through cffi and fuzzed on desktop, so no decoder is
           ever written by hand. Read-only by design: it never touches throttle or steering.</p>
-        <p class="pmetric">▸ 12-log fault corpus replayed on every change: 2,906 indicators, 0 divergence</p>
+        <p class="pmetric">▸ 12 simulated fault logs replayed on every change: 2,906 indicators, 0 divergence</p>
         <p class="pstack">C99 · C++ / FreeRTOS · ESP32-S3 · LoRa (SX1262) · Python · PlatformIO</p>
         <p><a href="https://github.com/TeaS0710/airc-telemetry" target="_blank" rel="noopener noreferrer">source on GitHub <svg class="ext" width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 8 8 2M3.5 2H8v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a></p>
       </div>
@@ -335,6 +336,7 @@
       </header>
       <div class="window__body prose">
         <ul class="mlist">
+          <li><strong>La Carte Prelys</strong>: interactive analysis of the Île-de-France real-estate market for a brokerage's partner agencies (Next.js, MapLibre, Python data pipeline over DVF/INSEE, LLM-written district notes), deployed as a static site. <a href="https://github.com/TeaS0710/La_Carte_Immo" target="_blank" rel="noopener noreferrer">source on GitHub <svg class="ext" width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 8 8 2M3.5 2H8v4.5" fill="none" stroke="currentColor" stroke-width="1.3"/></svg></a></li>
           <li><strong>Multilingual ASR pipeline</strong>: audio preparation, Whisper transcription, model comparison and structured reporting on heterogeneous oral corpora.</li>
           <li><strong>Dementia detection from speech</strong>: binary classification on the DementiaBank Pitt corpus ("cookie theft" task).</li>
           <li><strong>Political classification on TEI-XML corpora</strong>: supervised TF-IDF pipelines with execution profiles, data audits and reproducible comparisons.</li>
@@ -354,16 +356,18 @@
       </header>
       <div class="window__body prose">
         <article class="xp">
-          <p class="xp__head"><span class="xp__year">2026</span><span class="xp__type">freelance</span></p>
-          <h3>Independent Engineering Missions</h3>
-          <p class="pctx">Technical missions for social-sector and education clients</p>
+          <p class="xp__head"><span class="xp__year">2026</span><span class="xp__type">missions</span></p>
+          <h3>Client Engineering Missions</h3>
+          <p class="pctx">Technical missions for social-sector, education and real-estate clients</p>
           <ul>
             <li>Built the beta of a care-network platform matching isolated elderly caregivers with younger
               helpers: SvelteKit, PostgreSQL/PostGIS, four user surfaces, a static verification harness
               and production-build checks.</li>
-            <li>Authored the product specification for a French-learning application: CEFR-calibrated
-              (A1→C2) engagement loop, LLM tutor design, and a full feature inventory consolidated from
-              two legacy codebases.</li>
+            <li>Designed, built and deployed a French-learning web application (DELF-DALF preparation for
+              Chinese-speaking learners): CEFR-calibrated (A1→C2) engagement loop, LLM tutor, feature
+              inventory consolidated from two legacy codebases; in production on Cloudflare Pages.</li>
+            <li>Built an interactive real-estate market analysis tool for a brokerage's partner agencies:
+              Next.js, MapLibre, Python data pipeline (DVF, INSEE), LLM-written district notes; static deploy.</li>
           </ul>
         </article>
         <article class="xp">
@@ -401,7 +405,7 @@
           <div><dt>Backend</dt><dd>FastAPI · Flask · SvelteKit · Next.js · Node · SQLite · PostgreSQL / PostGIS · Cloudflare Workers &amp; Pages</dd></div>
           <div><dt>Methods</dt><dd>Reproducible pipelines · gold-data evaluation · statistical validation · benchmarking under identical conditions · fuzzing under ASan/UBSan · non-regression corpora · technical documentation · bilingual deliverables</dd></div>
           <div><dt>Systems</dt><dd>Linux · Git · Docker · Makefile workflows · ffmpeg · pytest · MuJoCo / LeRobot · FreeCAD</dd></div>
-          <div><dt>Hardware</dt><dd>Raspberry Pi · ESP32 / ESP32-S3 (FreeRTOS, PlatformIO) · LoRa · IMU / GNSS integration · Jetson (Nano, Orin) · PC assembly &amp; repair · brushless / RC systems · hardware integration &amp; maintenance</dd></div>
+          <div><dt>Hardware</dt><dd>Raspberry Pi · ESP32 / ESP32-S3 (FreeRTOS, PlatformIO) · LoRa · IMU / GNSS integration · Jetson (Nano, Orin) · Kendryte K230 · PC assembly &amp; repair · brushless / RC systems · hardware integration &amp; maintenance</dd></div>
         </dl>
       </div>
       <div class="window__resize" aria-hidden="true"></div>
@@ -414,7 +418,7 @@
       <div class="window__body prose">
         <article class="xp">
           <p class="xp__head"><span class="xp__year">2025–2027</span></p>
-          <h3>Master's in NLP &amp; AI Applications</h3>
+          <h3>Master's in Language Sciences, Language &amp; Computing track (NLP, AI)</h3>
           <p class="pctx">Sorbonne Université · M1 validated 2026, currently in M2</p>
         </article>
         <article class="xp">
@@ -438,7 +442,7 @@
       </header>
       <div class="window__body prose">
         <h3>Write to me</h3>
-        <p class="lead">Open to M2 internships, freelance missions and technical collaborations.</p>
+        <p class="lead">Open to M2 internships, missions and technical collaborations.</p>
         <a class="mail-big" href="mailto:vergneadrien65@gmail.com">vergneadrien65@gmail.com</a>
         <dl class="kv">
           <div><dt>Phone</dt><dd><a href="tel:+33786985160">+33 7 86 98 51 60</a></dd></div>
@@ -465,16 +469,17 @@
           </header>
 
           <h4>Profile</h4>
-          <p>Master's student at Sorbonne Université (M2, NLP &amp; AI applications) with training in software
+          <p>Master's student at Sorbonne Université (M2 Language &amp; Computing track: NLP, AI) with training in software
             engineering, machine learning and natural language processing. Real deliveries across data
             pipelines, supervised classification, LLM inference and evaluation, ASR/OCR, API and platform
             development, and embedded-oriented prototyping. Every claim measured: gold-data evaluation,
             reproducible benchmarks, red-teamed safety, logged failures.</p>
 
           <h4>Experience</h4>
-          <p><strong>2026 · Independent engineering missions (freelance).</strong> Beta of a care-network
-            platform (SvelteKit, PostgreSQL/PostGIS, four surfaces, verification harness); product
-            specification for a CEFR-calibrated French-learning application.</p>
+          <p><strong>2026 · Client engineering missions.</strong> Beta of a care-network platform
+            (SvelteKit, PostgreSQL/PostGIS, four surfaces, verification harness); a French-learning web
+            application designed, built and deployed (CEFR-calibrated, LLM tutor); an interactive
+            real-estate market analysis tool (Next.js, Python data pipeline).</p>
           <p><strong>2024 · NLP &amp; data collection internship, CERES (Sorbonne Université).</strong>
             Collection, structuring and analysis of political and textual data; Python scripts for
             extraction, normalization and corpus analysis; categorization and OCR on documentary corpora.</p>
@@ -483,7 +488,7 @@
 
           <h4>Selected projects</h4>
           <ul>
-            <li><strong>Louvre catalogue LLM pipeline</strong> (Master's thesis): 51,123 records normalized
+            <li><strong>Louvre catalogue LLM pipeline</strong> (M1 project, with Michel Chan): 51,123 records normalized
               via the Louvre public API; 11 LLMs × 44 configurations vs a hand-annotated gold set;
               0.961 macro-F1; geocoded interactive map.</li>
             <li><strong>Smart-café operating platform</strong>: real-time CPU-only in-store vision (privacy
@@ -500,9 +505,9 @@
               leave-one-out MAE 4.43 pts, explicit bias audit.</li>
             <li><strong>Wi-Fi sensing / CSI stack</strong>: presence detection from radio signals on Linux
               / Intel AX210.</li>
-            <li><strong>RC telemetry stack</strong>: ESP32-S3 firmware (4 kHz IMU, GNSS, LoRa) + ground
+            <li><strong>RC telemetry stack</strong>: ESP32-S3 firmware (7.2 kHz IMU, GNSS, LoRa) + ground
               station + Python ESKF/physics/alert chain; one fuzzed C99 protocol core shared by boards and
-              PC; 12-log fault corpus, 0 divergence.</li>
+              PC; 12 simulated fault logs, 0 divergence.</li>
             <li>Also: multilingual ASR pipeline · dementia detection from speech (DementiaBank Pitt) ·
               TEI-XML political classification · zero-backend aid search engine · local PDF analysis
               pipeline · French-learning game design · RC compatibility engine · 200+ km/h RC build with
@@ -516,10 +521,10 @@
             (Whisper), OCR, TEI-XML, scikit-learn · <strong>Backend:</strong> FastAPI, Flask, SvelteKit,
             Next.js, Node, SQLite, PostgreSQL/PostGIS, Cloudflare Workers &amp; Pages ·
             <strong>Systems:</strong> Linux, Git, Docker, Makefile, ffmpeg, pytest, MuJoCo/LeRobot, FreeCAD ·
-            <strong>Hardware:</strong> Raspberry Pi, ESP32, Jetson, PC assembly &amp; repair, brushless/RC.</p>
+            <strong>Hardware:</strong> Raspberry Pi, ESP32, Jetson, K230, PC assembly &amp; repair, brushless/RC.</p>
 
           <h4>Education</h4>
-          <p>2025–2027: Master's in NLP &amp; AI applications, Sorbonne Université (M1 validated 2026,
+          <p>2025–2027: Master's in Language Sciences, Language &amp; Computing track (NLP, AI), Sorbonne Université (M1 validated 2026,
             currently M2) · 2022–2025: Bachelor's in Language Sciences (CS track), Sorbonne Université ·
             2022: Baccalauréat, Lycée Condorcet.</p>
 
@@ -566,6 +571,6 @@
     <button data-open="win-contact"><svg class="ico"><use href="#i-mail"/></svg> contact.mail</button>
   </nav>
 
-  <script src="assets/app.js?v=10"></script>
+  <script src="assets/app.js?v=11"></script>
 </body>
 </html>

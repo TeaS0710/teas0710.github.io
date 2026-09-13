@@ -382,7 +382,7 @@
     tbar(function (p) { return ollamaLine("8f2a1c9e", "1 human", p); }, 450, function () {
       tprint('<span class="t-dim">&gt;&gt;&gt; loaded adrien:m2, streaming…</span>');
       tstream("Hi. I normalize museum catalogues with LLMs, benchmark 11 models against hand-made gold data, " +
-        "teach a robot arm in MuJoCo, log an RC car at 4 kHz, and tune it past 200 km/h. " +
+        "teach a robot arm in MuJoCo, log an RC car at 7 kHz, and tune it past 200 km/h. " +
         "Weights are not for sale, but inference is: vergneadrien65@gmail.com", function () {
         termBusy = false;
       });
@@ -409,7 +409,7 @@
       ].join("\n");
     },
     about: function () { openWindow("win-about"); return "opening about.txt …"; },
-    whoami: function () { return 'adrien: M2 NLP &amp; AI @ Sorbonne Université, freelance on the side.\n<span class="t-dim">Trains on free Kaggle GPUs. Trusts gold data over vibes.</span>'; },
+    whoami: function () { return 'adrien: M2 NLP &amp; AI @ Sorbonne Université, client missions on the side.\n<span class="t-dim">Trains on free Kaggle GPUs. Trusts gold data over vibes.</span>'; },
     projects: function () {
       openWindow("win-projects");
       return [
@@ -421,7 +421,7 @@
         "p06  world-machine          <span class='t-dim'>society simulation engine</span>",
         "p07  electoral-model        <span class='t-dim'>LOO MAE 4.43 pts</span>",
         "p08  wifi-csi               <span class='t-dim'>presence from radio signals</span>",
-        "p09  airc-telemetry         <span class='t-dim'>4 kHz IMU → LoRa → ESKF, fuzzed C99 core</span>",
+        "p09  airc-telemetry         <span class='t-dim'>7.2 kHz IMU → LoRa → ESKF, fuzzed C99 core</span>",
         "<span class='t-dim'>type</span> open p01 <span class='t-dim'>(… p09) to read one</span>"
       ].join("\n");
     },
